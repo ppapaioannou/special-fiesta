@@ -1,0 +1,6 @@
+.preview{
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 50ch;
+}

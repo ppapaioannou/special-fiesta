@@ -1,0 +1,22 @@
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-8">
+        <h1 class="blog-title">{{post.title}}</h1>
+        <span>
+                  <p>by {{post.username}}</p>
+              </span>
+        <hr>
+        <div class="breaking">
+          <p [innerHTML]="post.body"></p>
+        </div>
+        <hr>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <a href="" class="contact btn btn-primary">Contact</a>
+        </div>
+      </div>
+    </div>
+    <a href="" class="back btn btn-secondary">Back</a>
+  </div>
+</div>
