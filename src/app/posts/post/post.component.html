@@ -1,19 +1,33 @@
 <div class="content">
   <div class="container">
     <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-8">
+      <div class="col-md">
         <h1 class="blog-title">{{post.title}}</h1>
-        <span>
-                  <p>by {{post.username}}</p>
-              </span>
+        <p>by {{post.username}}</p>
+        <p>posted on: {{post.createdAt}}</p>
+        <div class="main-div d-flex">
+          <ul class="list-group list-group-flush" *ngFor="let image of postImages | async">
+            <li class="list-group-item">
+              <img src="{{image.url}}" alt="{{image.name}}" height="200px" />
+            </li>
+          </ul>
+        </div>
+        <br>
+        <div *ngIf="post.postType=='missing'">
+          <h5>Location: {{post.address}}</h5>
+          <h5>Missing Date: {{post.date}}</h5>
+          <h6>Breed: {{post.breed}}</h6>
+          <h6>Gender: {{post.gender}}</h6>
+          <h6>Colors: {{post.colors}}</h6>
+          <h6>Size: {{post.size}}</h6>
+          <h6>Microchip Number: {{post.microchipNumber}}</h6>
+        </div>
         <hr>
         <div class="breaking">
           <p [innerHTML]="post.body"></p>
         </div>
-        <hr>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <a href="" class="contact btn btn-primary">Contact</a>
+          <a href="/discussion/{{post.id}}" class="contact btn btn-primary">Discussion</a>
         </div>
       </div>
     </div>

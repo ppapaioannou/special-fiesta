@@ -9,3 +9,7 @@
 .post-content, .post-title{
   color: royalblue;
 }
+
+.preview {
+  max-width: 200px;
+}

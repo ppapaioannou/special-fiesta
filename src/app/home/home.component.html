@@ -1,12 +1,19 @@
 <div class="content">
   <div class="container">
     <div class="row" *ngFor="let post of posts | async">
-      <div class="blogpost">
-        <h3><a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
+      <div class="home">
+        <h3>{{post.postType}}: <a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
         <div>
-          <i class="fas fa-user"></i> Author: <p>{{post.username}}</p>
+          <i class="fas fa-user"></i> By: {{post.username}}
         </div>
-        <p class="preview" [innerHTML]="post.body"></p>
+        <img class="thumbnail" src="{{post.thumbnail}}" alt=""/>
+        <div *ngIf="post.postType=='missing'">
+          <h5>Location: {{post.address}}</h5>
+          <h5>Date: {{post.date}}</h5>
+        </div>
+        <div class="preview" *ngIf="post.postType=='simple'">
+          <p class="preview" [innerHTML]="post.body"></p>
+        </div>
         <div>
           <a type="button" href="/post/{{post.id}}" class="read-more btn btn-info">Read More</a>
         </div>

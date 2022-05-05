@@ -56,7 +56,6 @@ export class RegisterOrganizationComponent implements OnInit {
     this.registerPayload.email = this.registerOrganizationForm.value.email;
     this.registerPayload.password = this.registerOrganizationForm.value.password;
     this.registerPayload.name = this.registerOrganizationForm.value.organizationName;
-    //this.registerPayload.logo = this.registerOrganizationForm.value.logo;
     this.registerPayload.description = this.registerOrganizationForm.value.description;
     this.registerPayload.region = this.registerOrganizationForm.value.region;
     this.registerPayload.address = this.registerOrganizationForm.value.address;

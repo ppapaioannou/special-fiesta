@@ -1,0 +1,20 @@
+<input #mapSearchField class="maps-search-field" type="text"/>
+
+<google-map
+  height="300px"
+  width="100%"
+  [zoom]="map_zoom"
+  [center]="map_center"
+  [options]="map_options"
+  (mapClick)="placeMarker($event)">
+  <map-marker
+    [position]="marker_position"
+  >
+  </map-marker>
+</google-map>
+
+<div class="container justify-content-center">
+  <h6>Address: {{address}}</h6>
+  <button type="button" (click)="setLocation()">Set Location</button>
+  <hr>
+</div>

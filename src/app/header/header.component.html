@@ -6,7 +6,7 @@
       </div> <!-- Title -->
 
       <div class="col-md-6" *ngIf="authService.isAuthenticated()">
-        <a href="/add-post" class="new-post">Add Post</a>
+        <a href="/post-type-selection" class="new-post">Add Post</a>
         <button class="logout btn btn-default" (click)="logout()">Logout</button>
       </div> <!-- Add Post and Logout -->
       <div class="col-md-6" *ngIf="!authService.isAuthenticated()">

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
-import {PostPayload} from '../posts/add-post/post-payload';
+import {PostPayload} from '../posts/post-payload';
 import {PostService} from "../posts/post.service";
 
 @Component({

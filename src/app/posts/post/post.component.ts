@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {PostPayload} from '../add-post/post-payload';
+import {ActivatedRoute, Router} from '@angular/router';
+import {PostPayload} from '../post-payload';
 import {PostService} from "../post.service";
+import {AuthService} from "../../auth/auth.service";
+import {Observable} from "rxjs";
+import {ImageService} from "../image.service";
 
 @Component({
   selector: 'app-post',
@@ -10,34 +13,46 @@ import {PostService} from "../post.service";
 })
 export class PostComponent implements OnInit {
   post: PostPayload;
+  postImages: any;
   permalink!: Number;
 
-  constructor(private router: ActivatedRoute, private postService: PostService) {
+  constructor(private router: Router, private aRoute: ActivatedRoute,
+              private postService: PostService, private imageService: ImageService) {
     this.post = {
-      id: '',
-      title: '',
-      body: '',
-      username: ''
+      animalType: "",
+      body: "",
+      breed: "",
+      colors: [],
+      createdAt: "",
+      date: "",
+      gender: "",
+      id: "",
+      microchipNumber: "",
+      postType: "",
+      size: "",
+      thumbnail: "",
+      title: "",
+      username: "",
+
+      latitude: "",
+      longitude: "",
+      address: ""
     };
   }
 
   ngOnInit() {
-    this.router.params.subscribe(params => {
+    this.aRoute.params.subscribe(params => {
       this.permalink = params['id'];
     });
 
-    //this.postService.getPost(this.permalink).subscribe((data:PostPayload) => {
-    //  this.post = data;
-    //},(error: any) => {
-    //  console.log('Failure Response');
-    //})
     this.postService.getPost(this.permalink).subscribe({
       error: () => {
-        console.log('register failed')
+        console.log('Failure Response')
       }, next: (data:PostPayload) => {
         this.post = data;
       }
     });
-  }
 
+    this.postImages = this.imageService.getPostImages(this.permalink);
+  }
 }

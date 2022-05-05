@@ -1,7 +1,12 @@
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent} from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { LocalStorageService } from 'ngx-webstorage';
 import { Injectable } from '@angular/core';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor
+} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import {LocalStorageService} from "ngx-webstorage";
 
 @Injectable()
 export class HttpClientInterceptor implements HttpInterceptor {

@@ -31,6 +31,12 @@ export class AuthService {
     return this.localStorageService.retrieve('email') != null;
   }
 
+  isPostOwner(username: String): boolean {
+    //TODO
+    //console.log(this.localStorageService.retrieve('email'))
+    return true;
+  }
+
   logout() {
     this.localStorageService.clear('authenticationToken');
     this.localStorageService.clear('email');
