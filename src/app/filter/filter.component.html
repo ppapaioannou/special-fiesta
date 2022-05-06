@@ -1,1 +1,44 @@
-<p>filter works!</p>
+<div class="filter-posts">
+  <div class="container">
+    <div>
+      <h3 class="filter-criteria">Filter Posts</h3>
+    </div>
+    <hr>
+    <form [formGroup]="criteriaForm" (ngSubmit)="filter()">
+      <label class="filter-postType">Show only:&ensp;</label>
+      <div class="form-check-inline" *ngFor="let postType of postTypes; let i=index">
+        <label>
+          <input type="checkbox" [value]="postType.name" (change)="onCbChange($event)" />
+          {{postType.name}}
+        </label>
+      </div>
+      <br>
+      <label class="filter-animalType">Posts about:&ensp;</label>
+      <div class="form-check-inline" *ngFor="let animalType of animalTypes; let i=index">
+        <label>
+          <input type="radio" [formControlName]="'animalType'" [value]="animalType.name" checked/>
+          {{animalType.name}}
+        </label>
+      </div>
+      <br>
+      <label class="filter-size">Size:&ensp;</label>
+      <div class="form-check-inline" *ngFor="let size of sizes; let i=index">
+        <label>
+          <input type="radio" [formControlName]="'size'" [value]="size.name" checked/>
+          {{size.name}}
+        </label>
+      </div>
+      <br>
+      <label class="filter-gender">Gender:&ensp;</label>
+      <div class="form-check-inline" *ngFor="let gender of genders; let i=index">
+        <label>
+          <input type="radio" [formControlName]="'gender'" [value]="gender.name" checked/>
+          {{gender.name}}
+        </label>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Filter</button>
+      </div>
+    </form >
+  </div>
+</div>

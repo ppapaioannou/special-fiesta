@@ -10,7 +10,13 @@ export class PostService {
 
   private url = 'http://localhost:8080/api/v1/posts/';
 
+  private filterCriteria = "";
+
   constructor(private httpClient: HttpClient) {
+  }
+
+  addFilterCriteria(criteria: string) {
+    this.filterCriteria = criteria;
   }
 
   addPost(request: PostPayload, images: FormData) {
@@ -18,7 +24,8 @@ export class PostService {
   }
 
   getAllPosts(): Observable<Array<PostPayload>> {
-    return this.httpClient.get<Array<PostPayload>>(this.url + 'all');
+    console.log(this.url + 'all?search=' + this.filterCriteria)
+    return this.httpClient.get<Array<PostPayload>>(this.url + 'all?search=' + this.filterCriteria);
   }
 
   getPost(permalink: Number):Observable<PostPayload> {

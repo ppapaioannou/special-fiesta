@@ -16,8 +16,7 @@ export class PostComponent implements OnInit {
   postImages: any;
   permalink!: Number;
 
-  constructor(private router: Router, private aRoute: ActivatedRoute,
-              private postService: PostService, private imageService: ImageService) {
+  constructor(private aRoute: ActivatedRoute, private postService: PostService, private imageService: ImageService) {
     this.post = {
       animalType: "",
       body: "",
