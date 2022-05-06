@@ -1,5 +1,9 @@
 <div class="content">
   <div class="container">
+    <div>
+      <a type="button" href="/near-me" class="near btn btn-info">Near Me</a>
+      <a type="button" href="/filter" class="near btn btn-info">Filter</a>
+    </div>
     <div class="row" *ngFor="let post of posts | async">
       <div class="home">
         <h3>{{post.postType}}: <a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
@@ -9,6 +13,7 @@
         <img class="thumbnail" src="{{post.thumbnail}}" alt=""/>
         <div *ngIf="post.postType=='missing'">
           <h5>Location: {{post.address}}</h5>
+          <h5>Distance: {{post.distance}}</h5>
           <h5>Date: {{post.date}}</h5>
         </div>
         <div class="preview" *ngIf="post.postType=='simple'">

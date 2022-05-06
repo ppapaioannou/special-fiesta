@@ -46,7 +46,8 @@ export class SimplePostComponent implements OnInit {
 
       latitude: "",
       longitude: "",
-      address: ""
+      address: "",
+      distance: ""
 
     }
   }

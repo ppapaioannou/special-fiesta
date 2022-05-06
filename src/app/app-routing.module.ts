@@ -15,6 +15,8 @@ import {AdoptionPostComponent} from "./posts/add-post/adoption-post/adoption-pos
 import {StrayPostComponent} from "./posts/add-post/stray-post/stray-post.component";
 import {DiscussionComponent} from "./posts/comments/discussion/discussion.component";
 import {AddCommentComponent} from "./posts/comments/add-comment/add-comment.component";
+import {NearMeComponent} from "./near-me/near-me.component";
+import {FilterComponent} from "./filter/filter.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -31,7 +33,9 @@ const routes: Routes = [
   {path: 'stray-post', component: StrayPostComponent, canActivate: [AuthGuard]},
   {path: 'simple-post', component: SimplePostComponent, canActivate: [AuthGuard]},
   {path: 'discussion/:id', component: DiscussionComponent, canActivate: [AuthGuard]},
-  {path: 'add-comment/:id', component: AddCommentComponent, canActivate: [AuthGuard]}
+  {path: 'add-comment/:id', component: AddCommentComponent, canActivate: [AuthGuard]},
+  {path: 'near-me', component: NearMeComponent, canActivate: [AuthGuard]},
+  {path: 'filter', component: FilterComponent}
 ];
 
 

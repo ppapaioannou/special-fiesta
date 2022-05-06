@@ -25,6 +25,8 @@ import { AddCommentComponent } from './posts/comments/add-comment/add-comment.co
 import { DiscussionComponent } from './posts/comments/discussion/discussion.component';
 import { MapComponent } from './posts/map/map.component';
 import {GoogleMapsModule} from "@angular/google-maps";
+import { NearMeComponent } from './near-me/near-me.component';
+import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import {GoogleMapsModule} from "@angular/google-maps";
     AddCommentComponent,
     DiscussionComponent,
     MapComponent,
+    NearMeComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

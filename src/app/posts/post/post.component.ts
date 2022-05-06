@@ -36,7 +36,8 @@ export class PostComponent implements OnInit {
 
       latitude: "",
       longitude: "",
-      address: ""
+      address: "",
+      distance: ""
     };
   }
 

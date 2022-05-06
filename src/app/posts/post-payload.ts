@@ -17,5 +17,6 @@ export interface PostPayload{
   latitude: String;
   longitude: String;
   address: String;
+  distance: String;
 
 }

@@ -49,7 +49,8 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.locationPayload = {
       address: "",
       latitude: "",
-      longitude: ""
+      longitude: "",
+      diameterInMeters: ""
     }
   }
 

@@ -98,7 +98,8 @@ export class MissingPostComponent implements OnInit {
 
       latitude: "",
       longitude: "",
-      address: ""
+      address: "",
+      distance: ""
     }
   }
 
