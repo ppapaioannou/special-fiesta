@@ -1,1 +1,9 @@
-<p>notifications works!</p>
+<h2>Notifications</h2>
+<div class="row" *ngFor="let notification of notifications | async">
+  <div class="notifications">
+    <p>{{notification.text}} {{notification.createdAt}}</p>
+    <button class="btn-primary" type="button" (click)="read(notification.id)">Read</button>
+    <button class="btn-danger" type="button" (click)="delete(notification.id)">Delete</button>
+    <hr>
+  </div>
+</div>

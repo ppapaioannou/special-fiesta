@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from "rxjs";
+import {NotificationPayload} from "../notification-payload";
+import {NotificationService} from "../notification.service";
 
 @Component({
   selector: 'app-notifications',
@@ -7,9 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationsComponent implements OnInit {
 
-  constructor() { }
+  notifications!: Observable<Array<NotificationPayload>>;
+
+  constructor(private notificationService: NotificationService) { }
 
   ngOnInit(): void {
+    this.notifications = this.notificationService.getAllNotifications();
+  }
+
+  read(notificationId: string) {
+    //this.connectionService.acceptConnection(userId);
+    this.notificationService.read(notificationId).subscribe({
+      complete: () => {
+        console.log('notification read successfully')
+      }, error: () => {
+        console.log('notification read failed')
+      }, next: () => {
+        window.location.reload();
+      }
+    });
+  }
+
+  delete(notificationId: string) {
+    //this.connectionService.acceptConnection(userId);
+    this.notificationService.delete(notificationId).subscribe({
+      complete: () => {
+        console.log('notification deleted successfully')
+      }, error: () => {
+        console.log('notification deletion failed')
+      }, next: () => {
+        window.location.reload();
+      }
+    });
   }
 
 }
