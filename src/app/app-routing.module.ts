@@ -17,6 +17,9 @@ import {DiscussionComponent} from "./posts/comments/discussion/discussion.compon
 import {AddCommentComponent} from "./posts/comments/add-comment/add-comment.component";
 import {NearMeComponent} from "./near-me/near-me.component";
 import {FilterComponent} from "./filter/filter.component";
+import {UserComponent} from "./users/user/user.component";
+import {ConnectionsComponent} from "./users/connections/connections.component";
+import {NotificationsComponent} from "./users/notifications/notifications.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -35,7 +38,10 @@ const routes: Routes = [
   {path: 'discussion/:id', component: DiscussionComponent, canActivate: [AuthGuard]},
   {path: 'add-comment/:id', component: AddCommentComponent, canActivate: [AuthGuard]},
   {path: 'near-me', component: NearMeComponent, canActivate: [AuthGuard]},
-  {path: 'filter', component: FilterComponent}
+  {path: 'filter', component: FilterComponent},
+  {path: 'user/:id', component: UserComponent, canActivate: [AuthGuard]},
+  {path: 'connections', component: ConnectionsComponent, canActivate: [AuthGuard]},
+  {path: 'notifications', component: NotificationsComponent, canActivate: [AuthGuard]},
 ];
 
 

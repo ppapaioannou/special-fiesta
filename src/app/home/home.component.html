@@ -8,7 +8,7 @@
       <div class="home">
         <h3>{{post.postType}}: <a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
         <div>
-          <i class="fas fa-user"></i> By: {{post.username}}
+          <i class="fas fa-user"></i> By: <a href="/user/{{post.userId}}" class="post-user"> {{post.username}} </a>
         </div>
         <img class="thumbnail" src="{{post.thumbnail}}" alt=""/>
         <div *ngIf="post.postType=='missing'">

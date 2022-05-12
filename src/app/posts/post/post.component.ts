@@ -32,6 +32,7 @@ export class PostComponent implements OnInit {
       thumbnail: "",
       title: "",
       username: "",
+      userId: "",
 
       latitude: "",
       longitude: "",

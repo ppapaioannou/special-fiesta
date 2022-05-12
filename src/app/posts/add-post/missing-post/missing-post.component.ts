@@ -95,6 +95,7 @@ export class MissingPostComponent implements OnInit {
       thumbnail: "",
       title: "",
       username: "",
+      userId: "",
 
       latitude: "",
       longitude: "",

@@ -1,0 +1,16 @@
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md">
+        <h1 class="user-name">{{user.name}}</h1>
+      </div>
+      <button *ngIf="!authService.isOwnUserPage(user.email) && !isConnectedTo"
+              type="button" class="btn btn-primary" (click)="connect()">
+        {{user.accountType == 'INDIVIDUAL' ? 'Add Friend' : 'Follow Organization'}}</button>
+      <button *ngIf="isConnectedTo"
+              type="button" class="btn btn-danger" (click)="deleteConnection()">
+        {{user.accountType == 'INDIVIDUAL' ? 'Remove Friend' : 'Unfollow Organization'}}</button>
+    </div>
+    <a href="" class="back btn btn-secondary">Home</a>
+  </div>
+</div>

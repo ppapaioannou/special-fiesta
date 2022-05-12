@@ -13,6 +13,7 @@ export interface PostPayload{
   thumbnail: any;
   title: String;
   username: String;
+  userId: String;
 
   latitude: String;
   longitude: String;

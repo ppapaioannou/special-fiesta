@@ -27,6 +27,9 @@ import { MapComponent } from './posts/map/map.component';
 import {GoogleMapsModule} from "@angular/google-maps";
 import { NearMeComponent } from './near-me/near-me.component';
 import { FilterComponent } from './filter/filter.component';
+import { UserComponent } from './users/user/user.component';
+import { ConnectionsComponent } from './users/connections/connections.component';
+import { NotificationsComponent } from './users/notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,10 @@ import { FilterComponent } from './filter/filter.component';
     DiscussionComponent,
     MapComponent,
     NearMeComponent,
-    FilterComponent
+    FilterComponent,
+    UserComponent,
+    ConnectionsComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,

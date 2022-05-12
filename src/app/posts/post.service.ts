@@ -24,7 +24,6 @@ export class PostService {
   }
 
   getAllPosts(): Observable<Array<PostPayload>> {
-    console.log(this.url + 'all?search=' + this.filterCriteria)
     return this.httpClient.get<Array<PostPayload>>(this.url + 'all?search=' + this.filterCriteria);
   }
 

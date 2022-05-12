@@ -43,6 +43,7 @@ export class SimplePostComponent implements OnInit {
       thumbnail: "",
       title: "",
       username: "",
+      userId: "",
 
       latitude: "",
       longitude: "",

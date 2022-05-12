@@ -31,10 +31,18 @@ export class AuthService {
     return this.localStorageService.retrieve('email') != null;
   }
 
+  getUsername(): string {
+    return this.localStorageService.retrieve('email')
+  }
+
   isPostOwner(username: String): boolean {
     //TODO
     //console.log(this.localStorageService.retrieve('email'))
     return true;
+  }
+
+  isOwnUserPage(email: String): boolean {
+    return this.localStorageService.retrieve('email') == email;
   }
 
   logout() {
