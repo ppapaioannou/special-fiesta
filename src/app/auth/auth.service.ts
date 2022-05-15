@@ -14,8 +14,8 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient, private localStorageService: LocalStorageService) { }
 
-  register(registerPayload: RegisterPayload, accountType: String): Observable<any> {
-    return this.httpClient.post(this.url + 'registration/' + accountType, registerPayload);
+  register(request: FormData, accountType: String): Observable<any> {
+    return this.httpClient.post(this.url + 'registration/' + accountType, request);
   }
 
   login(loginPayload: LoginPayload): Observable<boolean> {

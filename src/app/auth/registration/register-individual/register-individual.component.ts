@@ -14,6 +14,8 @@ export class RegisterIndividualComponent implements OnInit {
   registerIndividualForm: FormGroup;
   registerPayload: RegisterPayload;
 
+  formData: FormData = new FormData();
+
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router:Router) {
     this.registerIndividualForm = this.formBuilder.group({
       email: '',
@@ -23,19 +25,18 @@ export class RegisterIndividualComponent implements OnInit {
     });
     this.registerPayload = {
       address: "",
-      city: "",
       contactEmail: "",
       description: "",
       email: "",
       facebookPageUrl: "",
       lastName: "",
+      latitude: "",
+      longitude: "",
       name: "",
       organizationNeeds: "",
       password: "",
       phoneNumber: "",
-      region: "",
-      websiteUrl: "",
-      zipCode: ""
+      websiteUrl: ""
     };
   }
 
@@ -48,8 +49,9 @@ export class RegisterIndividualComponent implements OnInit {
     this.registerPayload.name = this.registerIndividualForm.value.firstName;
     this.registerPayload.lastName = this.registerIndividualForm.value.lastName;
 
+    this.formData.append('request', JSON.stringify(this.registerPayload))
 
-    this.authService.register(this.registerPayload, 'individual').subscribe({
+    this.authService.register(this.formData, 'individual').subscribe({
       complete: () => {
         console.log('register success')
       }, error: () => {

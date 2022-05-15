@@ -30,6 +30,7 @@ import { FilterComponent } from './filter/filter.component';
 import { UserComponent } from './users/user/user.component';
 import { ConnectionsComponent } from './users/connections/connections.component';
 import { NotificationsComponent } from './users/notifications/notifications.component';
+import { RegistrationHeaderComponent } from './auth/registration/registration-header/registration-header.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { NotificationsComponent } from './users/notifications/notifications.comp
     FilterComponent,
     UserComponent,
     ConnectionsComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    RegistrationHeaderComponent
   ],
   imports: [
     BrowserModule,

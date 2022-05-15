@@ -8,10 +8,9 @@ export interface RegisterPayload {
   lastName: String;
 
   contactEmail:String;
-  region: String;
+  latitude: String;
+  longitude: String;
   address: String;
-  city: String;
-  zipCode: String;
   websiteUrl: String;
   facebookPageUrl: String;
   organizationNeeds: String;
