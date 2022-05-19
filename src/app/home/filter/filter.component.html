@@ -1,10 +1,15 @@
 <div class="filter-posts">
   <div class="container">
-    <div>
-      <h3 class="filter-criteria">Filter Posts</h3>
-    </div>
-    <hr>
     <form [formGroup]="criteriaForm" (ngSubmit)="filter()">
+      <h3 class="filter-criteria">Filter Posts</h3>
+      <div>
+        <label class="sortBy">Sort By:&ensp;</label>
+        <select [formControlName]="'orderBy'">
+          <option [ngValue]="'date'">Date (recent first)</option>
+          <option [ngValue]="'distance'">Distance (nearest first)</option>
+        </select>
+        <br>
+      </div>
       <label class="filter-postType">Show only:&ensp;</label>
       <div class="form-check-inline" *ngFor="let postType of postTypes; let i=index">
         <label>
@@ -36,8 +41,16 @@
           {{gender.name}}
         </label>
       </div>
+      <br>
+      <div>
+        <label class="post-breed">Age:&ensp;</label>
+        <select [formControlName]="'age'">
+          <option *ngFor="let age of ages" [ngValue]="age.name">{{age.name}}</option>
+        </select>
+        <br>
+      </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary">Filter</button>
+        <button type="submit" class="btn btn-primary">Update</button>
       </div>
     </form >
   </div>

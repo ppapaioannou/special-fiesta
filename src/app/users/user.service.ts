@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {PostPayload} from "../posts/post-payload";
-import {LocationPayload} from "../posts/location-payload";
+import {LocationPayload} from "../location/location-payload";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserPayload} from "./user-payload";

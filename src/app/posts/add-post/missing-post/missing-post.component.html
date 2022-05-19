@@ -39,7 +39,14 @@
         <div *ngIf="animalType.value=='Dog'">
           <label class="post-breed">Breed:&ensp;</label>
           <select [formControlName]="'breed'">
-            <option *ngFor="let breed of breeds" [ngValue]="breed.name">{{breed.name}}</option>
+            <option *ngFor="let breed of dogBreeds" [ngValue]="breed.name">{{breed.name}}</option>
+          </select>
+          <br>
+        </div>
+        <div *ngIf="animalType.value=='Cat'">
+          <label class="post-breed">Breed:&ensp;</label>
+          <select [formControlName]="'breed'">
+            <option *ngFor="let breed of catBreeds" [ngValue]="breed.name">{{breed.name}}</option>
           </select>
           <br>
         </div>
@@ -73,7 +80,7 @@
         <input type="text" [formControlName]="'microchipNumber'" class="form-control" placeholder="Microchip Number" required="false">
       </div>
       <div class="form-group">
-        <label class="post-content">Body</label>
+        <label class="post-content">Additional Information</label>
         <textarea type="text" [formControlName]="'body'" class="form-control" placeholder="Body" required="true"></textarea>
       </div>
       <div class="form-group">

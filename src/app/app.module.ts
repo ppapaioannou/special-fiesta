@@ -8,7 +8,6 @@ import { RegisterSuccessComponent } from './auth/registration/register-success/r
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AppRoutingModule} from "./app-routing.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import { HomeComponent } from './home/home.component';
 import {NgxWebstorageModule} from "ngx-webstorage";
 import { SimplePostComponent } from './posts/add-post/simple-post/simple-post.component';
 import { PostComponent } from './posts/post/post.component';
@@ -23,14 +22,19 @@ import { StrayPostComponent } from './posts/add-post/stray-post/stray-post.compo
 import { CommentComponent } from './posts/comments/comment/comment.component';
 import { AddCommentComponent } from './posts/comments/add-comment/add-comment.component';
 import { DiscussionComponent } from './posts/comments/discussion/discussion.component';
-import { MapComponent } from './posts/map/map.component';
+import { MapComponent } from './location/map/map.component';
 import {GoogleMapsModule} from "@angular/google-maps";
-import { NearMeComponent } from './near-me/near-me.component';
-import { FilterComponent } from './filter/filter.component';
+import { NearMeComponent } from './home/near-me/near-me.component';
+import { FilterComponent } from './home/filter/filter.component';
 import { UserComponent } from './users/user/user.component';
 import { ConnectionsComponent } from './users/connections/connections.component';
 import { NotificationsComponent } from './users/notifications/notifications.component';
 import { RegistrationHeaderComponent } from './auth/registration/registration-header/registration-header.component';
+import { HomeEventsComponent } from './home/events/home-events/home-events.component';
+import { HomeRescueModeComponent } from './home/home-rescue-mode/home-rescue-mode.component';
+import { AddEventComponent } from './home/events/add-event/add-event.component';
+import { EventComponent } from './home/events/event/event.component';
+import { CommunityComponent } from './users/community/community.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,7 @@ import { RegistrationHeaderComponent } from './auth/registration/registration-he
     HeaderComponent,
     LoginComponent,
     RegisterSuccessComponent,
-    HomeComponent,
+    HomeRescueModeComponent,
     SimplePostComponent,
     PostComponent,
     RegisterIndividualComponent,
@@ -57,7 +61,11 @@ import { RegistrationHeaderComponent } from './auth/registration/registration-he
     UserComponent,
     ConnectionsComponent,
     NotificationsComponent,
-    RegistrationHeaderComponent
+    RegistrationHeaderComponent,
+    HomeEventsComponent,
+    AddEventComponent,
+    EventComponent,
+    CommunityComponent,
   ],
   imports: [
     BrowserModule,

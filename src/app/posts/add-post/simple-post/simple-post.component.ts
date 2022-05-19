@@ -29,27 +29,32 @@ export class SimplePostComponent implements OnInit {
       body: this.body
     });
     this.postPayload = {
+      actionTaken: "",
+      address: "",
+      age: "",
       animalType: "",
       body: "",
       breed: "",
       colors: [],
       createdAt: "",
       date: "",
+      time: "",
+      eventAttendees: "",
+      distance: 0,
       gender: "",
+      goodWithAnimals: false,
+      goodWithChildren: false,
       id: "",
-      microchipNumber: "",
-      postType: "",
-      size: "",
-      thumbnail: "",
-      title: "",
-      username: "",
-      userId: "",
-
       latitude: "",
       longitude: "",
-      address: "",
-      distance: ""
-
+      microchipNumber: "",
+      neutered: false,
+      postType: "",
+      size: "",
+      thumbnail: undefined,
+      title: "",
+      userId: "",
+      username: ""
     }
   }
 

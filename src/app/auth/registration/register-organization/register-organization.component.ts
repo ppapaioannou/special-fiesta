@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {RegisterPayload} from "../../register-payload";
 import {AuthService} from "../../auth.service";
 import {Router} from "@angular/router";
-import {LocationPayload} from "../../../posts/location-payload";
+import {LocationPayload} from "../../../location/location-payload";
 
 @Component({
   selector: 'app-register-organization',

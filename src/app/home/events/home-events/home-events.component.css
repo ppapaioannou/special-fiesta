@@ -1,0 +1,15 @@
+.new-event{
+  margin-top: 10px;
+}
+.preview{
+  width: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.thumbnail{
+  width: 400px; /* Set a small width */
+}

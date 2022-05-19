@@ -1,0 +1,11 @@
+<div class="container">
+  <h3>Set your location</h3>
+  <app-map (location)="setLocation($event)"></app-map>
+  <h4>Receive notification about near posts:</h4>
+  <label>Distance from me: {{locationPayload.diameterInMeters}} meters</label>
+  <br>
+  <input type="range" min="1" max="100" value="40" (input)="valueChanged($event)">
+  <br>
+  <button type="button" class="btn btn-success" (click)="updateDistance()">Update</button>
+</div>
+

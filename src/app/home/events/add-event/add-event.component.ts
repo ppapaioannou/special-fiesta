@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {PostPayload} from "../../post-payload";
-import {PostService} from "../../post.service";
+import {PostPayload} from "../../../posts/post-payload";
+import {PostService} from "../../../posts/post.service";
 import {Router} from "@angular/router";
 import {LocationPayload} from "../../../location/location-payload";
 
 @Component({
-  selector: 'app-missing-post',
-  templateUrl: './missing-post.component.html',
-  styleUrls: ['./missing-post.component.css']
+  selector: 'app-add-event',
+  templateUrl: './add-event.component.html',
+  styleUrls: ['./add-event.component.css']
 })
-export class MissingPostComponent implements OnInit {
+export class AddEventComponent implements OnInit {
 
   animalTypes = [
     { id: 1, name: "Dog" },
@@ -64,14 +64,10 @@ export class MissingPostComponent implements OnInit {
 
   addPostForm: FormGroup;
   postPayload: PostPayload;
-  animalType = new FormControl('')
   title = new FormControl('');
   location = new FormControl('');
   date = new FormControl('');
-  breed = new FormControl('');
-  gender = new FormControl('');
-  size = new FormControl('');
-  microchipNumber = new FormControl('');
+  time = new FormControl('12:00')
   body = new FormControl('');
 
   selectedFiles?: FileList;
@@ -82,14 +78,10 @@ export class MissingPostComponent implements OnInit {
 
   constructor(private postService: PostService, private router: Router) {
     this.addPostForm = new FormGroup({
-      animalType: this.animalType,
       title: this.title,
       location: this.location,
       date: this.date,
-      breed: this.breed,
-      gender: this.gender,
-      size: this.size,
-      microchipNumber: this.microchipNumber,
+      time: this.time,
       body: this.body
     });
     this.postPayload = {
@@ -164,15 +156,10 @@ export class MissingPostComponent implements OnInit {
   }
 
   addPost() {
-    this.postPayload.animalType = this.addPostForm.value.animalType;
     this.postPayload.body = this.addPostForm.value.body;
-    this.postPayload.breed = this.addPostForm.value.breed;
-    this.postPayload.colors = this.color;
     this.postPayload.date = this.addPostForm.value.date;
-    this.postPayload.gender = this.addPostForm.value.gender;
-    this.postPayload.microchipNumber = this.addPostForm.value.microchipNumber;
-    this.postPayload.postType = "missing";
-    this.postPayload.size = this.addPostForm.value.size;
+    this.postPayload.time = this.addPostForm.value.time + ":00"; //seconds
+    this.postPayload.postType = "event";
     this.postPayload.title = this.addPostForm.value.title;
 
     this.formData.append('request', JSON.stringify(this.postPayload))
@@ -184,9 +171,8 @@ export class MissingPostComponent implements OnInit {
       }, error: () => {
         console.log('post upload failed')
       }, next: () => {
-        this.router.navigateByUrl('/').then(() => console.log('redirecting to home'))
+        this.router.navigateByUrl('/events').then(() => console.log('redirecting to home'))
       }
     });
-
   }
 }

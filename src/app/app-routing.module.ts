@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {HomeComponent} from "./home/home.component";
 import {RegisterAccountTypeSelectionComponent} from "./auth/registration/register-account-type-selection/register-account-type-selection.component";
 import {RegisterIndividualComponent} from "./auth/registration/register-individual/register-individual.component";
 import {RegisterOrganizationComponent} from "./auth/registration/register-organization/register-organization.component";
@@ -15,15 +14,20 @@ import {AdoptionPostComponent} from "./posts/add-post/adoption-post/adoption-pos
 import {StrayPostComponent} from "./posts/add-post/stray-post/stray-post.component";
 import {DiscussionComponent} from "./posts/comments/discussion/discussion.component";
 import {AddCommentComponent} from "./posts/comments/add-comment/add-comment.component";
-import {NearMeComponent} from "./near-me/near-me.component";
-import {FilterComponent} from "./filter/filter.component";
+import {NearMeComponent} from "./home/near-me/near-me.component";
+import {FilterComponent} from "./home/filter/filter.component";
 import {UserComponent} from "./users/user/user.component";
 import {ConnectionsComponent} from "./users/connections/connections.component";
 import {NotificationsComponent} from "./users/notifications/notifications.component";
+import {HomeEventsComponent} from "./home/events/home-events/home-events.component";
+import {HomeRescueModeComponent} from "./home/home-rescue-mode/home-rescue-mode.component";
+import {AddEventComponent} from "./home/events/add-event/add-event.component";
+import {EventComponent} from "./home/events/event/event.component";
+import {CommunityComponent} from "./users/community/community.component";
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'home', component: HomeComponent},
+  {path: '', component: HomeRescueModeComponent},
+  {path: 'home', component: HomeRescueModeComponent},
   {path: 'register-account-type-selection', component: RegisterAccountTypeSelectionComponent},
   {path: 'register-individual', component: RegisterIndividualComponent},
   {path: 'register-organization', component: RegisterOrganizationComponent},
@@ -42,6 +46,10 @@ const routes: Routes = [
   {path: 'user/:id', component: UserComponent, canActivate: [AuthGuard]},
   {path: 'connections', component: ConnectionsComponent, canActivate: [AuthGuard]},
   {path: 'notifications', component: NotificationsComponent, canActivate: [AuthGuard]},
+  {path: 'events', component: HomeEventsComponent},
+  {path: 'event/:id', component: EventComponent},
+  {path: 'add-event', component: AddEventComponent, canActivate: [AuthGuard]},
+  {path: 'community', component: CommunityComponent, canActivate: [AuthGuard]},
 ];
 
 

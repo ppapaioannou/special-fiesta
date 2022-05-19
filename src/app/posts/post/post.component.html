@@ -22,6 +22,26 @@
           <h6>Size: {{post.size}}</h6>
           <h6>Microchip Number: {{post.microchipNumber}}</h6>
         </div>
+        <div *ngIf="post.postType=='adoption'">
+          <h5>Location: {{post.address}}</h5>
+          <h6>Breed: {{post.breed}}</h6>
+          <h6>Age: {{post.age}}</h6>
+          <h6>Gender: {{post.gender}}</h6>
+          <h6>Colors: {{post.colors}}</h6>
+          <h6>Size: {{post.size}}</h6>
+          <h6>Neutered: {{post.neutered}}</h6>
+          <h6>Suitable for living with children: {{post.goodWithChildren}}</h6>
+          <h6>Suitable for coexistence with other animals: {{post.goodWithAnimals}}</h6>
+        </div>
+        <div *ngIf="post.postType=='stray'">
+          <h5>Location: {{post.address}}</h5>
+          <h5>Spotted On: {{post.date}}</h5>
+          <h5>Actions Taken: {{post.actionTaken}}</h5>
+          <h6>Breed: {{post.breed}}</h6>
+          <h6>Gender: {{post.gender}}</h6>
+          <h6>Colors: {{post.colors}}</h6>
+          <h6>Size: {{post.size}}</h6>
+        </div>
         <hr>
         <div class="breaking">
           <p [innerHTML]="post.body"></p>

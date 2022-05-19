@@ -20,9 +20,20 @@
   text-decoration: none;
   color: aliceblue;
   padding-top: 10px;
+  margin-left: 20px;
 }
 
-.logout:hover, .new-post:hover{
-  color: aliceblue;
+.logout:hover, .new-post:hover, .filter:hover, .account:hover{
   text-decoration: underline;
+}
+
+.filter{
+  float: left;
+  color: aliceblue;
+  padding-top: 10px;
+}
+
+.account{
+  float: right;
+  color: aliceblue;
 }

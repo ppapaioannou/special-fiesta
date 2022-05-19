@@ -22,7 +22,7 @@ export class AuthService {
     return this.httpClient.post<JwtAuthResponse>(this.url + 'login', loginPayload).pipe(map(data => {
       this.localStorageService.store('authenticationToken', data.authenticationToken);
       this.localStorageService.store('email', data.email);
-      console.log(data.authenticationToken);
+      //console.log(data.authenticationToken);
       return true;
     }));
   }

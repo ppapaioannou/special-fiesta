@@ -1,17 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {PostPayload} from '../post-payload';
-import {PostService} from "../post.service";
-import {AuthService} from "../../auth/auth.service";
-import {Observable} from "rxjs";
-import {ImageService} from "../image.service";
+import { Component, OnInit } from '@angular/core';
+import {PostPayload} from "../../../posts/post-payload";
+import {ActivatedRoute} from "@angular/router";
+import {PostService} from "../../../posts/post.service";
+import {ImageService} from "../../../posts/image.service";
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+  selector: 'app-event',
+  templateUrl: './event.component.html',
+  styleUrls: ['./event.component.css']
 })
-export class PostComponent implements OnInit {
+export class EventComponent implements OnInit {
+
   post: PostPayload;
   postImages: any;
   permalink!: Number;
@@ -61,5 +60,20 @@ export class PostComponent implements OnInit {
     });
 
     this.postImages = this.imageService.getPostImages(this.permalink);
+  }
+
+  willNotAttendEvent() {
+  }
+
+  willAttendEvent() {
+    this.postService.willAttendEvent(this.permalink).subscribe({
+      complete: () => {
+        console.log('response updated successfully')
+      }, error: () => {
+        console.log('response update failed')
+      }, next: () => {
+        window.location.reload();
+      }
+    });
   }
 }

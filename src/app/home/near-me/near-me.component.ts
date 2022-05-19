@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {LocationPayload} from "../posts/location-payload";
+import {LocationPayload} from "../../location/location-payload";
 import {toNumbers} from "@angular/compiler-cli/src/version_helpers";
-import {UserService} from "../users/user.service";
+import {UserService} from "../../users/user.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -19,7 +19,7 @@ export class NearMeComponent implements OnInit {
       address: "",
       latitude: "",
       longitude: "",
-      diameterInMeters: "7000"
+      diameterInMeters: "40000"
     }
 
     //this.radius = "7000"
@@ -30,7 +30,7 @@ export class NearMeComponent implements OnInit {
 
   valueChanged(e: any) {
     this.locationPayload.diameterInMeters = String(e.target.value * 1000);
-    if (Number(this.locationPayload.diameterInMeters) > 19000) {
+    if (Number(this.locationPayload.diameterInMeters) > 99000) {
       this.locationPayload.diameterInMeters = "inf"
     }
   }

@@ -5,6 +5,7 @@ export interface PostPayload{
   colors: String[];
   createdAt: String;
   date: String;
+  time: string;
   gender: String;
   id: String;
   microchipNumber: String;
@@ -18,6 +19,15 @@ export interface PostPayload{
   latitude: String;
   longitude: String;
   address: String;
-  distance: String;
+  distance: number;
+
+  actionTaken: string;
+
+  age: string;
+  neutered: boolean;
+  goodWithChildren: boolean;
+  goodWithAnimals: boolean;
+
+  eventAttendees: string;
 
 }

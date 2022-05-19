@@ -24,6 +24,7 @@ import {LocationPayload} from "../location-payload";
 
 export class MapComponent implements OnInit, AfterViewInit {
   @ViewChild('mapSearchField') searchField!: ElementRef;
+  @ViewChild('selectLocationButton') selectButton!: ElementRef;
   @ViewChild(GoogleMap) map!: GoogleMap;
 
   @Output() location = new EventEmitter<LocationPayload>();
@@ -71,6 +72,9 @@ export class MapComponent implements OnInit, AfterViewInit {
     );
     this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(
       this.searchField.nativeElement
+    );
+    this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(
+      this.selectButton.nativeElement
     );
     searchBox.addListener('places_changed', () => {
       const places = searchBox.getPlaces();
