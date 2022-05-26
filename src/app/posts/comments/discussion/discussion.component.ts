@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
-import {CommentPayload} from "../comment-payload";
-import {CommentService} from "../comment.service";
+import {CommentPayload} from "../../../payloads/comment-payload";
+import {CommentService} from "../../../services/comment.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({

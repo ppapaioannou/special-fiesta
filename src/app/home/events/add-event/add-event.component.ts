@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {PostPayload} from "../../../posts/post-payload";
-import {PostService} from "../../../posts/post.service";
+import {PostPayload} from "../../../payloads/post-payload";
+import {PostService} from "../../../services/post.service";
 import {Router} from "@angular/router";
-import {LocationPayload} from "../../../location/location-payload";
+import {LocationPayload} from "../../../payloads/location-payload";
 
 @Component({
   selector: 'app-add-event',
@@ -64,11 +64,11 @@ export class AddEventComponent implements OnInit {
 
   addPostForm: FormGroup;
   postPayload: PostPayload;
-  title = new FormControl('');
-  location = new FormControl('');
-  date = new FormControl('');
+  title = new FormControl();
+  location = new FormControl();
+  date = new FormControl();
   time = new FormControl('12:00')
-  body = new FormControl('');
+  body = new FormControl();
 
   selectedFiles?: FileList;
   previews: string[] = [];
@@ -169,8 +169,8 @@ export class AddEventComponent implements OnInit {
     this.postService.addPost(this.postPayload, this.formData).subscribe({
       complete: () => {
         console.log('posted successfully')
-      }, error: () => {
-        console.log('post upload failed')
+      }, error: (err) => {
+        this.router.navigateByUrl('/post-error').then(() => console.log('error: ' + err.status));
       }, next: () => {
         this.router.navigateByUrl('/events').then(() => console.log('redirecting to home'))
       }

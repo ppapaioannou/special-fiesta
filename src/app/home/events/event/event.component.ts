@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {PostPayload} from "../../../posts/post-payload";
+import {PostPayload} from "../../../payloads/post-payload";
 import {ActivatedRoute} from "@angular/router";
-import {PostService} from "../../../posts/post.service";
-import {ImageService} from "../../../posts/image.service";
+import {PostService} from "../../../services/post.service";
+import {ImageService} from "../../../services/image.service";
 
 @Component({
   selector: 'app-event',

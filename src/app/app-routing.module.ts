@@ -28,6 +28,10 @@ import {IndividualsComponent} from "./users/individuals/individuals.component";
 import {OrganizationsComponent} from "./users/organizations/organizations.component";
 import {ProfileComponent} from "./users/profile/profile.component";
 import {SettingsComponent} from "./users/settings/settings.component";
+import {LoginErrorComponent} from "./errors/login-error/login-error.component";
+import {RegisterErrorComponent} from "./errors/register-error/register-error.component";
+import {PostErrorComponent} from "./errors/post-error/post-error.component";
+import {LocationErrorComponent} from "./errors/location-error/location-error.component";
 
 const routes: Routes = [
   {path: '', component: HomeRescueModeComponent},
@@ -59,6 +63,10 @@ const routes: Routes = [
   {path: 'organizations', component: OrganizationsComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
+  {path: 'login-error', component: LoginErrorComponent},
+  {path: 'register-error', component: RegisterErrorComponent},
+  {path: 'post-error', component: PostErrorComponent, canActivate: [AuthGuard]},
+  {path: 'location-error', component: LocationErrorComponent, canActivate: [AuthGuard]},
 ];
 
 

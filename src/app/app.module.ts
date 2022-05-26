@@ -39,6 +39,10 @@ import { IndividualsComponent } from './users/individuals/individuals.component'
 import { OrganizationsComponent } from './users/organizations/organizations.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { SettingsComponent } from './users/settings/settings.component';
+import { LoginErrorComponent } from './errors/login-error/login-error.component';
+import { RegisterErrorComponent } from './errors/register-error/register-error.component';
+import { PostErrorComponent } from './errors/post-error/post-error.component';
+import { LocationErrorComponent } from './errors/location-error/location-error.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +78,10 @@ import { SettingsComponent } from './users/settings/settings.component';
     OrganizationsComponent,
     ProfileComponent,
     SettingsComponent,
+    LoginErrorComponent,
+    RegisterErrorComponent,
+    PostErrorComponent,
+    LocationErrorComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {PostPayload} from "../posts/post-payload";
-import {LocationPayload} from "../location/location-payload";
+import {PostPayload} from "../payloads/post-payload";
+import {LocationPayload} from "../payloads/location-payload";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {UserPayload} from "./user-payload";
+import {UserPayload} from "../payloads/user-payload";
 
 @Injectable({
   providedIn: 'root'

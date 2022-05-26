@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {RegisterPayload} from "../../register-payload";
-import {AuthService} from "../../auth.service";
+import {RegisterPayload} from "../../../payloads/register-payload";
+import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -59,8 +59,8 @@ export class RegisterIndividualComponent implements OnInit {
     this.authService.register(this.formData, 'individual', this.refLink).subscribe({
       complete: () => {
         console.log('register success')
-      }, error: () => {
-        console.log('register failed')
+      }, error: (err) => {
+        this.router.navigateByUrl('/register-error').then(() => console.log('error: ' + err.status));
       }, next: () => {
         this.router.navigate(["register-success", this.registerPayload.email])
           .then(() => console.log('email sent'));

@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {PostPayload} from '../post-payload';
-import {PostService} from "../post.service";
-import {AuthService} from "../../auth/auth.service";
+import {PostPayload} from '../../payloads/post-payload';
+import {PostService} from "../../services/post.service";
+import {AuthService} from "../../services/auth.service";
 import {Observable} from "rxjs";
-import {ImageService} from "../image.service";
+import {ImageService} from "../../services/image.service";
 
 @Component({
   selector: 'app-post',

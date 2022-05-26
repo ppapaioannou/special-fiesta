@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
-import {UserPayload} from "../user-payload";
-import {ConnectionService} from "../connection.service";
-import {AuthService} from "../../auth/auth.service";
+import {UserPayload} from "../../payloads/user-payload";
+import {ConnectionService} from "../../services/connection.service";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-connections',

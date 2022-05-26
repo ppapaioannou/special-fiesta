@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {PostPayload} from "../../post-payload";
-import {PostService} from "../../post.service";
+import {PostPayload} from "../../../payloads/post-payload";
+import {PostService} from "../../../services/post.service";
 import {Router} from "@angular/router";
-import {LocationPayload} from "../../../location/location-payload";
+import {LocationPayload} from "../../../payloads/location-payload";
 
 @Component({
   selector: 'app-stray-post',
@@ -75,17 +75,17 @@ export class StrayPostComponent implements OnInit {
 
   addPostForm: FormGroup;
   postPayload: PostPayload;
-  animalType = new FormControl('')
-  title = new FormControl('');
-  location = new FormControl('');
-  date = new FormControl('');
-  breed = new FormControl('');
-  gender = new FormControl('');
-  size = new FormControl('');
-  microchipNumber = new FormControl('');
-  body = new FormControl('');
-  actionTaken = new FormControl('');
-  actionTakenOther = new FormControl('');
+  animalType = new FormControl()
+  title = new FormControl();
+  location = new FormControl();
+  date = new FormControl();
+  breed = new FormControl();
+  gender = new FormControl();
+  size = new FormControl();
+  microchipNumber = new FormControl();
+  body = new FormControl();
+  actionTaken = new FormControl();
+  actionTakenOther = new FormControl();
 
   selectedFiles?: FileList;
   previews: string[] = [];
@@ -204,8 +204,8 @@ export class StrayPostComponent implements OnInit {
     this.postService.addPost(this.postPayload, this.formData).subscribe({
       complete: () => {
         console.log('posted successfully')
-      }, error: () => {
-        console.log('post upload failed')
+      }, error: (err) => {
+        this.router.navigateByUrl('/post-error').then(() => console.log('error: ' + err.status));
       }, next: () => {
         this.router.navigateByUrl('/').then(() => console.log('redirecting to home'))
       }

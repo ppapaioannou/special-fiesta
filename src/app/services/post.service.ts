@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {PostPayload} from "./post-payload";
+import {PostPayload} from "../payloads/post-payload";
 import {map, Observable} from "rxjs";
 
 @Injectable({

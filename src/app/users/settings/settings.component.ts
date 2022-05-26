@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
-import {UserPayload} from "../user-payload";
-import {ConnectionService} from "../connection.service";
+import {UserPayload} from "../../payloads/user-payload";
+import {ConnectionService} from "../../services/connection.service";
 import {Router} from "@angular/router";
 
 @Component({

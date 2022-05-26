@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {PostPayload} from "../../posts/post-payload";
-import {UserService} from "../user.service";
-import {UserPayload} from "../user-payload";
+import {PostPayload} from "../../payloads/post-payload";
+import {UserService} from "../../services/user.service";
+import {UserPayload} from "../../payloads/user-payload";
 import {ActivatedRoute} from "@angular/router";
-import {AuthService} from "../../auth/auth.service";
-import {ConnectionService} from "../connection.service";
+import {AuthService} from "../../services/auth.service";
+import {ConnectionService} from "../../services/connection.service";
 import {Observable} from "rxjs";
-import {PostService} from "../../posts/post.service";
+import {PostService} from "../../services/post.service";
 
 @Component({
   selector: 'app-user',

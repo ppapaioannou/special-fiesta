@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import {GoogleMap} from "@angular/google-maps";
 import {toNumbers} from "@angular/compiler-cli/src/version_helpers";
-import {LocationPayload} from "../location-payload";
+import {LocationPayload} from "../../payloads/location-payload";
 
 @Component({
   selector: 'app-map',

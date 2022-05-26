@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
-import {PostPayload} from "../../../posts/post-payload";
-import {PostService} from "../../../posts/post.service";
-import {AuthService} from "../../../auth/auth.service";
+import {PostPayload} from "../../../payloads/post-payload";
+import {PostService} from "../../../services/post.service";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-home-events',

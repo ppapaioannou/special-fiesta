@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {PostPayload} from "../post-payload";
-import {CommentPayload} from "./comment-payload";
+import {PostPayload} from "../payloads/post-payload";
+import {CommentPayload} from "../payloads/comment-payload";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({

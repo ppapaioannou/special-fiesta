@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup} from "@angular/forms";
-import {CommentService} from "../comment.service";
-import {PostPayload} from "../../post-payload";
-import {CommentPayload} from "../comment-payload";
+import {CommentService} from "../../../services/comment.service";
+import {PostPayload} from "../../../payloads/post-payload";
+import {CommentPayload} from "../../../payloads/comment-payload";
 
 @Component({
   selector: 'app-add-comment',
@@ -14,7 +14,7 @@ export class AddCommentComponent implements OnInit {
   postId!: Number;
   addCommentForm: FormGroup;
   commentPayload: CommentPayload;
-  body = new FormControl('');
+  body = new FormControl();
 
   constructor(private aRoute: ActivatedRoute, private commentService: CommentService, private router: Router) {
     this.addCommentForm = new FormGroup({

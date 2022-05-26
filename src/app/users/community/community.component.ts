@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
-import {UserPayload} from "../user-payload";
-import {UserService} from "../user.service";
+import {UserPayload} from "../../payloads/user-payload";
+import {UserService} from "../../services/user.service";
 import {FormControl, FormGroup} from "@angular/forms";
-import {PostPayload} from "../../posts/post-payload";
+import {PostPayload} from "../../payloads/post-payload";
 
 @Component({
   selector: 'app-community',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {PostPayload} from "../../post-payload";
+import {PostPayload} from "../../../payloads/post-payload";
 import {Router} from "@angular/router";
-import {PostService} from "../../post.service";
+import {PostService} from "../../../services/post.service";
 import {Observable} from "rxjs";
 
 @Component({
@@ -14,8 +14,8 @@ export class SimplePostComponent implements OnInit {
 
   addPostForm: FormGroup;
   postPayload: PostPayload;
-  title = new FormControl('');
-  body = new FormControl('');
+  title = new FormControl();
+  body = new FormControl();
 
   selectedFiles?: FileList;
   previews: string[] = [];
@@ -95,8 +95,8 @@ export class SimplePostComponent implements OnInit {
     this.postService.addPost(this.postPayload, this.formData).subscribe({
       complete: () => {
         console.log('posted successfully')
-      }, error: () => {
-        console.log('post upload failed')
+      }, error: (err) => {
+        this.router.navigateByUrl('/post-error').then(() => console.log('error: ' + err.status));
       }, next: () => {
         this.router.navigateByUrl('/').then(() => console.log('redirecting to home'))
       }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {LocationPayload} from "../../location/location-payload";
+import {LocationPayload} from "../../payloads/location-payload";
 import {toNumbers} from "@angular/compiler-cli/src/version_helpers";
-import {UserService} from "../../users/user.service";
+import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -45,8 +45,8 @@ export class NearMeComponent implements OnInit {
     this.userService.updateUserLocation(this.locationPayload).subscribe({
       complete: () => {
         console.log('user location updated successfully')
-      }, error: () => {
-        console.log('user location update failed')
+      }, error: (err) => {
+        this.router.navigateByUrl('/location-error').then(() => console.log('error: ' + err.status));
       }, next: () => {
         this.router.navigateByUrl('/').then(() => console.log('redirecting to home'))
       }

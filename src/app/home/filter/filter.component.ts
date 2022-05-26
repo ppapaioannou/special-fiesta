@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
-import {PostService} from "../../posts/post.service";
+import {PostService} from "../../services/post.service";
 
 @Component({
   selector: 'app-filter',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
-import {UserPayload} from "../user-payload";
-import {UserService} from "../user.service";
+import {UserPayload} from "../../payloads/user-payload";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-organizations',
