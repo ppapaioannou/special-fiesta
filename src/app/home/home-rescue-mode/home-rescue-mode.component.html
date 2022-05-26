@@ -10,7 +10,7 @@
     </ul>
     <div class="row" *ngFor="let post of posts">
       <div *ngIf="post.id != '0'" class="home">
-        <h3>{{post.postType}}: <a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
+        <h3><span class="badge bg-warning">{{post.postType}}</span>&nbsp;<a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
         <div>
           <i class="fas fa-user"></i> By: <a href="/user/{{post.userId}}" class="post-user"> {{post.username}} </a>
         </div>

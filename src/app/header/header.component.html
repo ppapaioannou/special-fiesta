@@ -4,16 +4,14 @@
       <div class="col-md-6">
         <h1><a href="" class="title"> Rescue</a></h1>
       </div> <!-- Title -->
-
       <div class="col-md-6" *ngIf="authService.isAuthenticated()">
         <ul class="account nav nav-pills">
           <li class="nav-item dropdown">
             <a class="title nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-target="dropdown" href="#" role="button" aria-expanded="false">Account</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">{{username}}</a></li>
-              <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li><a class="dropdown-item" href="#">My Posts</a></li>
-              <li><a class="dropdown-item" href="/notifications">Notifications</a></li>
+              <li><a class="dropdown-item" href="user/{{userId}}">Profile</a></li>
+              <li><a class="dropdown-item" href="user/{{userId}}#posts">My Posts</a></li>
+              <li><a class="dropdown-item" href="user/{{userId}}#notifications">Notifications</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
             </ul>
@@ -49,7 +47,6 @@
         -->
         <a href="/near-me" class="filter btn">Near Me</a>
         <a href="/filter" class="filter btn">Filter</a>
-        <a href="/connections" class="new-post btn">Connections</a>
       </div>
 
       <div class="col-md-6" *ngIf="!authService.isAuthenticated()">

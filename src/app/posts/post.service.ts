@@ -32,15 +32,26 @@ export class PostService {
   getAllPosts(): Observable<Array<PostPayload>> {
     let filter = this.url + 'all?search=(postType!event' + this.filter + ")";
     console.log(filter)
-    /*
-    this.httpClient.get<Array<PostPayload>>(filter).pipe(
-      map(values => {
-        values.sort((a,b) => a.distance.localeCompare(b.distance));
-        console.log(values)
-        return values;
-      })
-    );
-    */
+    return this.httpClient.get<Array<PostPayload>>(filter);
+  }
+
+  getAllUserPosts(userId: string, organization: boolean): Observable<Array<PostPayload>> {
+    let filter = this.url + 'all?search=(user.id:' + userId;
+    if (organization) {
+      filter += ' AND postType!adoption)';
+    }
+    else {
+      filter += ')';
+    }
+    //let filter = this.url + 'all?search=(user.id:' + userId + ")";
+
+    return this.httpClient.get<Array<PostPayload>>(filter);
+  }
+
+  getAllFosterPosts(userId: string): Observable<Array<PostPayload>> {
+    let filter = this.url + 'all?search=(user.id:' + userId + ' AND postType:adoption)';
+    //let filter = this.url + 'all?search=(user.id:' + userId + ")";
+
     return this.httpClient.get<Array<PostPayload>>(filter);
   }
 
@@ -59,6 +70,10 @@ export class PostService {
 
   willNotAttendEvent() {
 
+  }
+
+  deletePost(postId: string) {
+    return this.httpClient.delete(this.url + 'delete/' + postId);
   }
 
 }

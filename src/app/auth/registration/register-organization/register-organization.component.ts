@@ -103,7 +103,7 @@ export class RegisterOrganizationComponent implements OnInit {
 
     this.formData.append('request', JSON.stringify(this.registerPayload))
 
-    this.authService.register(this.formData, 'organization').subscribe({
+    this.authService.register(this.formData, 'organization', "").subscribe({
       complete: () => {
         console.log('register success')
       }, error: () => {

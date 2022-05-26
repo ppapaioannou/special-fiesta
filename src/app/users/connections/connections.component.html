@@ -1,25 +1,62 @@
-<h2>Friend Requests</h2>
-<div class="row" *ngFor="let friendRequest of friendRequests | async">
-  <div class="friend-requests">
-    <p>{{friendRequest.name}} {{friendRequest.lastName}}</p>
-    <button class="btn-primary" type="button" (click)="acceptFriendRequest(friendRequest.id)">Accept</button>
-    <button class="btn-danger" type="button" (click)="declineFriendRequest()">Decline</button>
-    <hr>
+<div *ngIf="accountType=='INDIVIDUAL'">
+  <h2>Friend Requests</h2>
+  <div class="app flex-row align-items-center">
+    <div class="container">
+      <p>Here you can see people that want to connect with you.</p>
+      <div class="card-deck row">
+        <div class="card col-md-auto" *ngFor="let friendRequest of friendRequests | async">
+          <div class="card-block">
+            <img src="{{friendRequest.profileImage}}" alt="" width="150px"/>
+          </div>
+          <a href="user/{{friendRequest.id}}">{{friendRequest.name}} {{friendRequest.lastName}}</a>
+          <button class="btn-primary" type="button" (click)="acceptFriendRequest(friendRequest.id)">Accept</button>
+          <button class="btn-danger" type="button" (click)="declineFriendRequest()">Decline</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <h2>Friends</h2>
+  <div class="app flex-row align-items-center">
+    <div class="container">
+      <div class="card-deck row">
+        <div class="card col-md-4" *ngFor="let friend of friends | async">
+          <div class="card-block">
+            <img src="{{friend.profileImage}}" alt="" width="150px"/>
+          </div>
+          <a href="user/{{friend.id}}">{{friend.name}} {{friend.lastName}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <h2>Organizations</h2>
+  <div class="app flex-row align-items-center">
+    <div class="container">
+      <div class="card-deck row">
+        <div class="card col-md-4" *ngFor="let organization of organizations | async">
+          <div class="card-block">
+            <img src="{{organization.profileImage}}" alt="" width="150px"/>
+          </div>
+          <a href="user/{{organization.id}}">{{organization.name}}</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<hr>
-<h2>Friends</h2>
-<div class="row" *ngFor="let friend of friends | async">
-  <div class="friends">
-    <p><a href="user/{{friend.id}}" class="friend-profile-link">{{friend.name}} {{friend.lastName}}</a></p>
-    <hr>
-  </div>
-</div>
-<hr>
-<h2>Organizations</h2>
-<div class="row" *ngFor="let organization of organizations | async">
-  <div class="organizations">
-    <p><a href="user/{{organization.id}}" class="org-profile-link">{{organization.name}}</a></p>
-    <hr>
+<div *ngIf="accountType=='ORGANIZATION'">
+  <h2>Followers</h2>
+  <div class="app flex-row align-items-center">
+    <div class="container">
+      <p>Here you can see people that are following your organization.</p>
+      <div class="card-deck row">
+        <div class="card col-md-4" *ngFor="let follower of followers | async">
+          <div class="card-block">
+            <img src="{{follower.profileImage}}" alt="" width="150px"/>
+          </div>
+          <a href="user/{{follower.id}}">{{follower.name}} {{follower.lastName}}</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

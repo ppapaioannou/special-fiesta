@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginPayload).subscribe(data => {
       if (data) {
         console.log('login success');
-        this.router.navigateByUrl('/home').then(() => console.log('redirecting'));
+        this.router.navigateByUrl('/home').then(() => window.location.reload());
       } else {
         console.log('login failed');
       }

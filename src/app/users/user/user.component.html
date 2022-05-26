@@ -1,16 +1,142 @@
-<div class="content">
+<div *ngIf="authService.isOwnUserPage(user.email)" class="content">
   <div class="container">
-    <div class="row">
-      <div class="col-md">
-        <h1 class="user-name">{{user.name}}</h1>
+    <div class="d-flex align-items-start">
+      <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tab-list" aria-orientation="vertical">
+        <button class="nav-link active" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
+        <button class="nav-link" id="v-pills-posts-tab" data-bs-toggle="pill" data-bs-target="#v-pills-posts" type="button" role="tab" aria-controls="v-pills-posts" aria-selected="false">Posts</button>
+        <button class="nav-link" id="v-pills-connections-tab" data-bs-toggle="pill" data-bs-target="#v-pills-connections" type="button" role="tab" aria-controls="v-pills-connections" aria-selected="false">Connections</button>
+        <button class="nav-link" id="v-pills-notifications-tab" data-bs-toggle="pill" data-bs-target="#v-pills-notifications" type="button" role="tab" aria-controls="v-pills-notifications" aria-selected="false">Notifications</button>
+        <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
       </div>
-      <button *ngIf="!authService.isOwnUserPage(user.email) && !isConnectedTo"
-              type="button" class="btn btn-primary" (click)="connect()">
-        {{user.accountType == 'INDIVIDUAL' ? 'Add Friend' : 'Follow Organization'}}</button>
-      <button *ngIf="isConnectedTo"
-              type="button" class="btn btn-danger" (click)="deleteConnection()">
-        {{user.accountType == 'INDIVIDUAL' ? 'Remove Friend' : 'Unfollow Organization'}}</button>
+      <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-profile" role="tab-panel" aria-labelledby="v-pills-profile-tab" tabindex="0">
+          <app-profile></app-profile>
+        </div>
+        <div class="tab-pane fade" id="v-pills-posts" role="tab-panel" aria-labelledby="v-pills-posts-tab" tabindex="1">
+          <div class="row" *ngFor="let post of posts | async">
+            <div class="home">
+              <h3><span class="badge bg-warning">{{post.postType}}</span>&nbsp;<a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
+              <img class="thumbnail" src="{{post.thumbnail}}" alt=""/>
+              <br>
+              <button class="btn-primary" type="button" (click)="editPost()">Edit</button>
+              <button class="btn-danger" type="button" (click)="deletePost(post.id)">Delete</button>
+              <hr>
+            </div>
+          </div>
+          <div class="row" *ngFor="let post of fosters | async">
+            <div class="home">
+              <h3><span class="badge bg-warning">{{post.postType}}</span>&nbsp;<a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
+              <img class="thumbnail" src="{{post.thumbnail}}" alt=""/>
+              <br>
+              <button class="btn-primary" type="button" (click)="editPost()">Edit</button>
+              <button class="btn-danger" type="button" (click)="deletePost(post.id)">Delete</button>
+              <hr>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="v-pills-connections" role="tab-panel" aria-labelledby="v-pills-connections-tab" tabindex="2">
+          <app-connections></app-connections>
+        </div>
+        <div class="tab-pane fade" id="v-pills-notifications" role="tab-panel" aria-labelledby="v-pills-notifications-tab" tabindex="3">
+          <app-notifications></app-notifications>
+        </div>
+        <div class="tab-pane fade" id="v-pills-settings" role="tab-panel" aria-labelledby="v-pills-settings-tab" tabindex="4">
+          <app-settings></app-settings>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="!authService.isOwnUserPage(user.email)" class="content">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col">
+        <img src="{{user.profileImage}}" alt="" width="350px"/>
+      </div>
+      <div class="col-md-8">
+        <h1 class="user-name">{{user.name}} {{user.lastName}}</h1>
+        <p class="user-name">Community Standing: {{user.communityStanding}}</p>
+        <br>
+        <p class="user-description">{{user.description}}</p>
+        <div *ngIf="user.accountType == 'INDIVIDUAL'" class="row-cols-auto">
+          <div *ngIf="user.dateOfBirth != null">
+            <p>Date of Birth: {{user.dateOfBirth}}</p>
+          </div>
+          <div *ngIf="user.phoneNumber != ''">
+            <p>Phone Number: {{user.phoneNumber}}</p>
+          </div>
+
+
+        </div>
+        <div *ngIf="user.accountType == 'ORGANIZATION'" class="row-cols-auto">
+          <a href="{{user.websiteUrl}}">Organization Website</a>
+          <br>
+          <a href="{{user.facebookPageUrl}}">Facebook Page</a>
+        </div>
+
+        <br>
+        <div *ngIf="authService.getUserRole() == 'INDIVIDUAL'">
+          <button *ngIf="!authService.isOwnUserPage(user.email) && !isConnectedTo"
+                  type="button" class="btn-lg btn-primary" (click)="connect()">
+            {{user.accountType == 'INDIVIDUAL' ? 'Add Friend' : 'Follow Organization'}}</button>
+          <button *ngIf="isConnectedTo"
+                  type="button" class="btn-lg btn-danger" (click)="deleteConnection()">
+            {{user.accountType == 'INDIVIDUAL' ? 'Remove Friend' : 'Unfollow Organization'}}</button>
+        </div>
+        <button *ngIf="!authService.isOwnUserPage(user.email)"
+                type="button" class="btn-lg btn-success" (click)="commend()">Commend User</button>
+
+      </div>
+    </div>
+    <div *ngIf="!authService.isOwnUserPage(user.email)">
+      <ul class="nav nav-tabs" id="myTab" role="tab-list">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts" type="button" role="tab" aria-controls="home" aria-selected="true">Posts</button>
+        </li>
+        <li *ngIf="user.accountType == 'ORGANIZATION'" class="nav-item" role="presentation">
+          <button class="nav-link" id="fosters-tab" data-bs-toggle="tab" data-bs-target="#fosters" type="button" role="tab" aria-controls="profile" aria-selected="false">Fosters</button>
+        </li>
+        <li *ngIf="user.accountType == 'ORGANIZATION'" class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button>
+        </li>
+        <li *ngIf="user.accountType == 'ORGANIZATION'" class="nav-item" role="presentation">
+          <button class="nav-link" id="needs-tab" data-bs-toggle="tab" data-bs-target="#needs" type="button" role="tab" aria-controls="contact" aria-selected="false">Needs</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="posts" role="tab-panel" aria-labelledby="home-tab">
+          <div class="row" *ngFor="let post of posts | async">
+            <div class="home">
+              <h3><span class="badge bg-warning">{{post.postType}}</span>&nbsp;<a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
+              <img class="thumbnail" src="{{post.thumbnail}}" alt=""/>
+              <hr>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="fosters" role="tab-panel" aria-labelledby="profile-tab">
+          <div class="row" *ngFor="let foster of fosters | async">
+            <div class="home">
+              <h3><span class="badge bg-warning">{{foster.postType}}</span>&nbsp;<a href="/post/{{foster.id}}" class="blog-title">{{foster.title}}</a></h3>
+              <img class="thumbnail" src="{{foster.thumbnail}}" alt=""/>
+              <hr>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="contact" role="tab-panel" aria-labelledby="contact-tab">
+          Email: {{user.contactEmail}}
+          <div *ngIf="user.phoneNumber != ''">
+            <p>Phone Number: {{user.phoneNumber}}</p>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="needs" role="tab-panel" aria-labelledby="contact-tab">
+          {{user.organizationNeeds}}
+        </div>
+      </div>
     </div>
     <a href="" class="back btn btn-secondary">Home</a>
   </div>
 </div>
+

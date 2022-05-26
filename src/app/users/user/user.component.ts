@@ -5,6 +5,8 @@ import {UserPayload} from "../user-payload";
 import {ActivatedRoute} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
 import {ConnectionService} from "../connection.service";
+import {Observable} from "rxjs";
+import {PostService} from "../../posts/post.service";
 
 @Component({
   selector: 'app-user',
@@ -17,12 +19,28 @@ export class UserComponent implements OnInit {
   permalink!: Number;
   isConnectedTo = false;
 
+  posts!: Observable<Array<PostPayload>>;
+  fosters!: Observable<Array<PostPayload>>;
+
   constructor(private aRoute: ActivatedRoute, private userService: UserService,
-              public authService: AuthService, public connectionService: ConnectionService) {
+              public authService: AuthService, public connectionService: ConnectionService, public postService: PostService) {
     this.user = {
+      accountType: "",
+      communityStanding: "",
+      contactEmail: "",
+      dateOfBirth: "",
+      description: "",
+      email: "",
+      facebookPageUrl: "",
       id: "",
-      accountType: "", email: "", lastName: "", name: ""
+      lastName: "",
+      name: "",
+      organizationNeeds: "",
+      phoneNumber: "",
+      profileImage: undefined,
+      websiteUrl: ""
     }
+
 
 
   }
@@ -39,9 +57,18 @@ export class UserComponent implements OnInit {
         this.user = data;
         this.connectionService.isConnectedTo(this.user.id).subscribe((data:boolean) => {
           this.isConnectedTo = data
-          });
+        });
+        if (this.user.accountType == "INDIVIDUAL") {
+          this.posts = this.postService.getAllUserPosts(this.user.id, false);
+        }
+        else if (this.user.accountType == "ORGANIZATION") {
+          this.posts = this.postService.getAllUserPosts(this.user.id, true);
+          this.fosters = this.postService.getAllFosterPosts(this.user.id)
+        }
+
       }
     });
+
   }
 
   connect() {
@@ -68,5 +95,28 @@ export class UserComponent implements OnInit {
       }
     });
   }
+
+  commend() {
+
+  }
+
+  editPost() {
+
+  }
+
+  deletePost(postId: string) {
+    this.postService.deletePost(postId).subscribe({
+      complete: () => {
+        console.log('post deleted successfully')
+      }, error: () => {
+        console.log('post deletion failed')
+      }, next: () => {
+        window.location.reload();
+        //this.router.navigateByUrl('/').then(() => console.log('redirecting to home'))
+      }
+    });
+
+  }
+
 
 }

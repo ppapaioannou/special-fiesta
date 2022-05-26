@@ -18,7 +18,7 @@
     </div>
     <div class="row" *ngFor="let event of events | async">
       <div class="home">
-        <h3>{{event.postType}}: <a href="/event/{{event.id}}" class="blog-title">{{event.title}}</a></h3>
+        <h3><a href="/event/{{event.id}}" class="blog-title">{{event.title}}</a></h3>
         <div>
           <i class="fas fa-user"></i> By: <a href="/user/{{event.userId}}" class="post-user"> {{event.username}} </a>
         </div>

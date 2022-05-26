@@ -35,6 +35,10 @@ import { HomeRescueModeComponent } from './home/home-rescue-mode/home-rescue-mod
 import { AddEventComponent } from './home/events/add-event/add-event.component';
 import { EventComponent } from './home/events/event/event.component';
 import { CommunityComponent } from './users/community/community.component';
+import { IndividualsComponent } from './users/individuals/individuals.component';
+import { OrganizationsComponent } from './users/organizations/organizations.component';
+import { ProfileComponent } from './users/profile/profile.component';
+import { SettingsComponent } from './users/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +70,10 @@ import { CommunityComponent } from './users/community/community.component';
     AddEventComponent,
     EventComponent,
     CommunityComponent,
+    IndividualsComponent,
+    OrganizationsComponent,
+    ProfileComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

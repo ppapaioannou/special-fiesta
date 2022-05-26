@@ -1,7 +1,12 @@
 <h2>Notifications</h2>
 <div class="row" *ngFor="let notification of notifications | async">
   <div class="notifications">
-    <p>{{notification.text}} {{notification.createdAt}}</p>
+    <div *ngIf="notification.readAt == null">
+      <span class="badge bg-primary">NEW</span>
+    </div>
+    <p>{{notification.createdAt}}</p>
+    <p>{{notification.text}}, {{notification.post}}</p>
+    <p>From: {{notification.sender}}</p>
     <button class="btn-primary" type="button" (click)="read(notification.id)">Read</button>
     <button class="btn-danger" type="button" (click)="delete(notification.id)">Delete</button>
     <hr>

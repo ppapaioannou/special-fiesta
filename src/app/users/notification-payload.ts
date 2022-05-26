@@ -4,4 +4,5 @@ export interface NotificationPayload {
   post: string;
   text: string;
   createdAt: string;
+  readAt: string;
 }

@@ -94,9 +94,8 @@ export class AddEventComponent implements OnInit {
       colors: [],
       createdAt: "",
       date: "",
-      time: "",
-      eventAttendees: "",
       distance: 0,
+      eventAttendees: "",
       gender: "",
       goodWithAnimals: false,
       goodWithChildren: false,
@@ -105,13 +104,15 @@ export class AddEventComponent implements OnInit {
       longitude: "",
       microchipNumber: "",
       neutered: false,
+      numberOfComments: 0,
       postType: "",
       size: "",
       thumbnail: undefined,
+      time: "",
       title: "",
       userId: "",
       username: ""
-    }
+    };
   }
 
   ngOnInit() {

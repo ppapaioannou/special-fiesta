@@ -24,12 +24,17 @@ import {HomeRescueModeComponent} from "./home/home-rescue-mode/home-rescue-mode.
 import {AddEventComponent} from "./home/events/add-event/add-event.component";
 import {EventComponent} from "./home/events/event/event.component";
 import {CommunityComponent} from "./users/community/community.component";
+import {IndividualsComponent} from "./users/individuals/individuals.component";
+import {OrganizationsComponent} from "./users/organizations/organizations.component";
+import {ProfileComponent} from "./users/profile/profile.component";
+import {SettingsComponent} from "./users/settings/settings.component";
 
 const routes: Routes = [
   {path: '', component: HomeRescueModeComponent},
   {path: 'home', component: HomeRescueModeComponent},
   {path: 'register-account-type-selection', component: RegisterAccountTypeSelectionComponent},
   {path: 'register-individual', component: RegisterIndividualComponent},
+  {path: 'register-individual/ref/:id', component: RegisterIndividualComponent},
   {path: 'register-organization', component: RegisterOrganizationComponent},
   {path: 'register-success/:email', component: RegisterSuccessComponent},
   {path: 'login', component: LoginComponent},
@@ -50,6 +55,10 @@ const routes: Routes = [
   {path: 'event/:id', component: EventComponent},
   {path: 'add-event', component: AddEventComponent, canActivate: [AuthGuard]},
   {path: 'community', component: CommunityComponent, canActivate: [AuthGuard]},
+  {path: 'individuals', component: IndividualsComponent, canActivate: [AuthGuard]},
+  {path: 'organizations', component: OrganizationsComponent, canActivate: [AuthGuard]},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
 ];
 
 

@@ -33,6 +33,10 @@ export class ConnectionService {
     return this.httpClient.get<Array<UserPayload>>(this.url + 'organizations');
   }
 
+  getAllFollowers(): Observable<Array<UserPayload>> {
+    return this.httpClient.get<Array<UserPayload>>(this.url + 'followers');
+  }
+
   acceptConnection(userId: string) {
     return this.httpClient.put(this.url + 'accept/' + userId, '');
   }

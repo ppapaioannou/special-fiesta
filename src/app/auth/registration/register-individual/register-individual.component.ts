@@ -11,12 +11,15 @@ import {Router} from "@angular/router";
 })
 export class RegisterIndividualComponent implements OnInit {
 
+  refLink: string;
+
   registerIndividualForm: FormGroup;
   registerPayload: RegisterPayload;
 
   formData: FormData = new FormData();
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router:Router) {
+    this.refLink = router.url.slice(25);
     this.registerIndividualForm = this.formBuilder.group({
       email: '',
       password: '',
@@ -41,6 +44,7 @@ export class RegisterIndividualComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.refLink)
   }
 
   onSubmit() {
@@ -51,7 +55,8 @@ export class RegisterIndividualComponent implements OnInit {
 
     this.formData.append('request', JSON.stringify(this.registerPayload))
 
-    this.authService.register(this.formData, 'individual').subscribe({
+    //localhost:4200/register-individual/ref/9a2c3516-8ea9-4ff5-aa13-7b94bad85011
+    this.authService.register(this.formData, 'individual', this.refLink).subscribe({
       complete: () => {
         console.log('register success')
       }, error: () => {

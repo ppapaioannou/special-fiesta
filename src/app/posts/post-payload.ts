@@ -7,7 +7,7 @@ export interface PostPayload{
   date: String;
   time: string;
   gender: String;
-  id: String;
+  id: string;
   microchipNumber: String;
   postType: String;
   size: String;
@@ -20,6 +20,8 @@ export interface PostPayload{
   longitude: String;
   address: String;
   distance: number;
+
+  numberOfComments: number;
 
   actionTaken: string;
 
