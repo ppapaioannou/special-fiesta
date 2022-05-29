@@ -16,9 +16,9 @@ export class AuthService {
 
   register(request: FormData, accountType: String, refLink: string): Observable<any> {
     if (refLink != "") {
-      return this.httpClient.post(this.url + 'ref/registration/' + refLink +"/" + accountType, request);
+      return this.httpClient.post(this.url + 'ref/register/' + refLink +"/" + accountType, request);
     }
-    return this.httpClient.post(this.url + 'registration/' + accountType, request);
+    return this.httpClient.post(this.url + 'register/' + accountType, request);
   }
 
   login(loginPayload: LoginPayload): Observable<boolean> {

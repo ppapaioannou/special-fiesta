@@ -26,7 +26,7 @@ export class PostService {
   }
 
   addPost(request: FormData, postType: string) {
-    return this.httpClient.post(this.url + 'new-post/' + postType, request);
+    return this.httpClient.post(this.url + 'add-post/' + postType, request);
   }
 
   getAllPosts(): Observable<Array<PostPayload>> {

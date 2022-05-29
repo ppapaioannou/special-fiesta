@@ -45,4 +45,7 @@ export class UserService {
 
   }
 
+  deleteAccount() {
+    return this.httpClient.delete(this.url + 'delete')
+  }
 }
