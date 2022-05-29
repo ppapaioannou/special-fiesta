@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {PostPayload} from '../../payloads/post-payload';
-import {PostService} from "../../services/post.service";
-import {AuthService} from "../../services/auth.service";
-import {Observable} from "rxjs";
-import {ImageService} from "../../services/image.service";
+import {ActivatedRoute} from '@angular/router';
+import {PostPayload} from '../../payload/post-payload';
+import {PostService} from "../../service/post.service";
+import {ImageService} from "../../service/image.service";
+import {AuthService} from "../../service/auth.service";
 
 @Component({
   selector: 'app-post',
@@ -12,11 +11,13 @@ import {ImageService} from "../../services/image.service";
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
+
   post: PostPayload;
   postImages: any;
-  permalink!: Number;
+  permalink!: number;
 
-  constructor(private aRoute: ActivatedRoute, private postService: PostService, private imageService: ImageService) {
+  constructor(private aRoute: ActivatedRoute, private postService: PostService,
+              private imageService: ImageService, public authService: AuthService) {
     this.post = {
       actionTaken: "",
       address: "",
@@ -40,12 +41,12 @@ export class PostComponent implements OnInit {
       numberOfComments: 0,
       postType: "",
       size: "",
-      thumbnail: undefined,
+      thumbnail: "",
       time: "",
       title: "",
       userId: "",
       username: ""
-    };
+    }
   }
 
   ngOnInit() {
@@ -62,5 +63,20 @@ export class PostComponent implements OnInit {
     });
 
     this.postImages = this.imageService.getPostImages(this.permalink);
+  }
+
+  willNotAttendEvent() {
+  }
+
+  willAttendEvent() {
+    this.postService.willAttendEvent(this.permalink).subscribe({
+      next: () => {
+        console.log('response updated successfully')
+        window.location.reload();
+      }, error: () => {
+        // TODO add error?
+        console.log('response update failed')
+      },
+    });
   }
 }

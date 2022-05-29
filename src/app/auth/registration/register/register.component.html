@@ -1,0 +1,83 @@
+<app-register-header></app-register-header>
+<app-register-account-type-selection *ngIf="accountType == ''"></app-register-account-type-selection>
+<div *ngIf="accountType != ''" class="container justify-content-center" xmlns="http://www.w3.org/1999/html">
+  <form class="form-individual-registration" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <h1 class="h3 mb-3 font-weight-normal">Please Register</h1>
+    <div class="form-group">
+      <label for="inputEmail" class="sr-only required">Email*</label>
+      <input type="text" id="inputEmail" [formControlName]="'email'" class="form-control"
+             placeholder="Please enter your email" required="true" autofocus="">
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="sr-only required">Password*</label>
+      <input type="password" id="inputPassword" [formControlName]="'password'" class="form-control"
+             placeholder="Please enter a password" required="true">
+    </div>
+    <div *ngIf="accountType == 'individual'">
+      <div class="form-group">
+        <label for="inputFirstName" class="sr-only required">First Name*</label>
+        <input type="text" id="inputFirstName" [formControlName]="'name'" class="form-control"
+               placeholder="Please enter your first name" required="true" autofocus="">
+      </div>
+      <div class="form-group">
+        <label for="inputLastName" class="sr-only">Last Name</label>
+        <input type="text" id="inputLastName" [formControlName]="'lastName'" class="form-control"
+               placeholder="Please enter your last name" required="false">
+      </div>
+    </div>
+    <div *ngIf="accountType == 'organization'">
+      <div class="form-group">
+        <label for="inputOrganizationName" class="sr-only required">Organization Name*</label>
+        <input type="text" id="inputOrganizationName" [formControlName]="'name'" class="form-control"
+               placeholder="Please enter the name of your organization" required="true" autofocus="">
+      </div>
+      <div class="form-group">
+        <label for="inputOrganizationLogo" class="post-images">Organization Logo</label>
+        <input type="file" id="inputOrganizationLogo" accept="image/*" (change)="imageService.previewImages(previews, request, $event)"
+               class="form-control" required="false"/>
+      </div>
+      <div>
+        <img *ngFor='let preview of previews' [src]="preview" class="preview" alt="uploaded image preview">
+      </div>
+      <div class="form-group">
+        <label for="inputDescription" class="sr-only">Description</label>
+        <textarea type="text" id="inputDescription" [formControlName]="'description'" class="form-control"
+                  placeholder="Please enter a description for your organization" required="false"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="post-location">Select Organization Location</label>
+        <app-map (location)="setLocation($event)"></app-map>
+      </div>
+      <div class="form-group">
+        <label for="inputContactPhone" class="sr-only">Contact Phone</label>
+        <input type="text" id="inputContactPhone" [formControlName]="'contactPhone'" class="form-control"
+               placeholder="Please enter a contact phone" required="false">
+      </div>
+      <div class="form-group">
+        <label for="inputContactEmail" class="sr-only">Contact Email</label>
+        <input type="text" id="inputContactEmail" [formControlName]="'contactEmail'" class="form-control"
+               placeholder="Please enter a contact email" required="false">
+      </div>
+      <div class="form-group">
+        <label for="inputWebsiteUrl" class="sr-only">Web Site URL</label>
+        <input type="text" id="inputWebsiteUrl" [formControlName]="'websiteUrl'" class="form-control"
+               placeholder="Please enter your website url link" required="false">
+      </div>
+      <div class="form-group">
+        <label for="inputFacebookPageUrl" class="sr-only">Facebook Page URL</label>
+        <input type="text" id="inputFacebookPageUrl" [formControlName]="'facebookPageUrl'" class="form-control"
+               placeholder="Please enter your facebook page url link" required="false">
+      </div>
+      <div class="form-group">
+        <label for="inputOrganizationNeeds" class="sr-only">Organization Needs</label>
+        <textarea type="text" id="inputOrganizationNeeds" [formControlName]="'organizationNeeds'" class="form-control"
+                  placeholder="Please enter the needs of your organization" required="false"></textarea>
+      </div>
+    </div>
+    <br>
+    <div class="d-grid gap-2">
+      <button class="btn btn-lg btn-primary" type="submit">Sign up</button>
+    </div>
+  </form>
+</div>
+

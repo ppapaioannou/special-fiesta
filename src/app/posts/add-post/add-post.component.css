@@ -1,0 +1,11 @@
+.preview {
+  max-width: 200px;
+}
+
+.required{
+  color: royalblue;
+}
+
+.add-post-content{
+  padding-top: 20px;
+}

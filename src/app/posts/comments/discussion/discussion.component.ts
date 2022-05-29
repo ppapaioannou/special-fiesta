@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
-import {CommentPayload} from "../../../payloads/comment-payload";
-import {CommentService} from "../../../services/comment.service";
+import {CommentPayload} from "../../../payload/comment-payload";
+import {CommentService} from "../../../service/comment.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -10,7 +10,7 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./discussion.component.css']
 })
 export class DiscussionComponent implements OnInit {
-  postId!: Number
+  postId!: number
   comments!: Observable<Array<CommentPayload>>;
 
   constructor(private aRoute: ActivatedRoute, private commentService: CommentService) { }
@@ -21,7 +21,6 @@ export class DiscussionComponent implements OnInit {
     });
 
     this.comments = this.commentService.getAllComments(this.postId);
-    console.log(this.postId);
   }
 
 }

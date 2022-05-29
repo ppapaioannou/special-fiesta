@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {UserPayload} from "../../payloads/user-payload";
+import {UserPayload} from "../../payload/user-payload";
 import {ActivatedRoute} from "@angular/router";
-import {UserService} from "../../services/user.service";
+import {UserService} from "../../service/user.service";
 import {FormControl, FormGroup} from "@angular/forms";
+import {ImageService} from "../../service/image.service";
 
 @Component({
   selector: 'app-profile',
@@ -27,12 +28,11 @@ export class ProfileComponent implements OnInit {
   facebookPageUrl = new FormControl('');
   organizationNeeds = new FormControl('');
 
-  selectedFiles?: FileList;
   previews: string[] = [];
 
-  formData: FormData = new FormData();
+  request: FormData = new FormData();
 
-  constructor(private aRoute: ActivatedRoute, private userService: UserService) {
+  constructor(private aRoute: ActivatedRoute, private userService: UserService, public imageService: ImageService) {
     this.user = {
       accountType: "",
       communityStanding: "",
@@ -69,34 +69,13 @@ export class ProfileComponent implements OnInit {
     });
 
     this.userService.getUser(this.permalink).subscribe({
+      next: (data:UserPayload) => {
+        this.user = data;
+      },
       error: () => {
         console.log('Failure Response')
-      }, next: (data:UserPayload) => {
-        this.user = data;
       }
     });
-  }
-
-  previewImages(event: any) {
-    this.selectedFiles = event.target.files;
-
-    this.previews = [];
-    this.formData.delete('file')
-    if (this.selectedFiles && this.selectedFiles[0]) {
-      const numberOfFiles = this.selectedFiles.length;
-      for (let i = 0; i < numberOfFiles; i++) {
-        const reader = new FileReader();
-
-        reader.onload = (e: any) => {
-          //console.log(e.target.result);
-          this.previews.push(e.target.result);
-        };
-
-        reader.readAsDataURL(this.selectedFiles[i]);
-        this.formData.append('file', this.selectedFiles[i])
-        //this.postPayload.imagesData.push(this.selectedFiles[i])
-      }
-    }
   }
 
   updateProfile() {
@@ -112,15 +91,15 @@ export class ProfileComponent implements OnInit {
     this.user.organizationNeeds = this.organizationNeeds.value;
 
 
-    this.formData.append('request', JSON.stringify(this.user))
+    this.request.append('payload', JSON.stringify(this.user))
 
-    this.userService.updateUserInfo(this.formData).subscribe({
-      complete: () => {
+    this.userService.updateUserInfo(this.request).subscribe({
+      next: () => {
         console.log('user info updated successfully')
-      }, error: () => {
-        console.log('error while updating user info')
-      }, next: () => {
         window.location.reload();
+      },
+      error: () => {
+        console.log('error while updating user info')
       }
     });
   }

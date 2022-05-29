@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {LocationPayload} from "../../payloads/location-payload";
-import {toNumbers} from "@angular/compiler-cli/src/version_helpers";
-import {UserService} from "../../services/user.service";
+import {LocationPayload} from "../../payload/location-payload";
+import {UserService} from "../../service/user.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -12,7 +11,6 @@ import {Router} from "@angular/router";
 export class NearMeComponent implements OnInit {
 
   locationPayload: LocationPayload;
-  //radius: String;
 
   constructor(private userService: UserService, private router: Router) {
     this.locationPayload = {
@@ -21,8 +19,6 @@ export class NearMeComponent implements OnInit {
       longitude: "",
       diameterInMeters: "40000"
     }
-
-    //this.radius = "7000"
   }
 
   ngOnInit(): void {
@@ -43,12 +39,11 @@ export class NearMeComponent implements OnInit {
 
   updateDistance() {
     this.userService.updateUserLocation(this.locationPayload).subscribe({
-      complete: () => {
+      next: () => {
         console.log('user location updated successfully')
+        this.router.navigateByUrl('/').then(() => console.log('redirecting to home'))
       }, error: (err) => {
         this.router.navigateByUrl('/location-error').then(() => console.log('error: ' + err.status));
-      }, next: () => {
-        this.router.navigateByUrl('/').then(() => console.log('redirecting to home'))
       }
     });
 

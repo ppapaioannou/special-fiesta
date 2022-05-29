@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
-import {UserPayload} from "../../payloads/user-payload";
-import {ConnectionService} from "../../services/connection.service";
-import {AuthService} from "../../services/auth.service";
+import {UserPayload} from "../../payload/user-payload";
+import {ConnectionService} from "../../service/connection.service";
+import {AuthService} from "../../service/auth.service";
 
 @Component({
   selector: 'app-connections',
@@ -29,24 +29,19 @@ export class ConnectionsComponent implements OnInit {
       this.friends = this.connectionService.getAllFriends();
       this.organizations = this.connectionService.getAllOrganizations();
     }
-    //TODO
     else if (this.accountType == 'ORGANIZATION') {
       this.followers = this.connectionService.getAllFollowers();
     }
-
-
   }
 
   acceptFriendRequest(userId: string) {
-    //this.connectionService.acceptConnection(userId);
     this.connectionService.acceptConnection(userId).subscribe({
-      complete: () => {
+      next: () => {
         console.log('friend request accepted successfully')
-      }, error: () => {
-        console.log('friend request accept failed')
-      }, next: () => {
-        //this.router.navigateByUrl('connections').then(() => console.log('reloading page'))
         window.location.reload();
+      },
+      error: () => {
+        console.log('friend request accept failed')
       }
     });
   }

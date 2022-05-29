@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from "rxjs";
-import {UserPayload} from "../../payloads/user-payload";
-import {ConnectionService} from "../../services/connection.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-settings',

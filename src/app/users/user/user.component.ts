@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {PostPayload} from "../../payloads/post-payload";
-import {UserService} from "../../services/user.service";
-import {UserPayload} from "../../payloads/user-payload";
+import {PostPayload} from "../../payload/post-payload";
+import {UserService} from "../../service/user.service";
+import {UserPayload} from "../../payload/user-payload";
 import {ActivatedRoute} from "@angular/router";
-import {AuthService} from "../../services/auth.service";
-import {ConnectionService} from "../../services/connection.service";
+import {AuthService} from "../../service/auth.service";
+import {ConnectionService} from "../../service/connection.service";
 import {Observable} from "rxjs";
-import {PostService} from "../../services/post.service";
+import {PostService} from "../../service/post.service";
 
 @Component({
   selector: 'app-user',
@@ -23,7 +23,8 @@ export class UserComponent implements OnInit {
   fosters!: Observable<Array<PostPayload>>;
 
   constructor(private aRoute: ActivatedRoute, private userService: UserService,
-              public authService: AuthService, public connectionService: ConnectionService, public postService: PostService) {
+              public authService: AuthService, private connectionService: ConnectionService,
+              private postService: PostService) {
     this.user = {
       accountType: "",
       communityStanding: "",
@@ -40,9 +41,6 @@ export class UserComponent implements OnInit {
       profileImage: undefined,
       websiteUrl: ""
     }
-
-
-
   }
 
   ngOnInit(): void {
@@ -51,9 +49,7 @@ export class UserComponent implements OnInit {
     });
 
     this.userService.getUser(this.permalink).subscribe({
-      error: () => {
-        console.log('Failure Response')
-      }, next: (data:UserPayload) => {
+      next: (data:UserPayload) => {
         this.user = data;
         this.connectionService.isConnectedTo(this.user.id).subscribe((data:boolean) => {
           this.isConnectedTo = data
@@ -65,33 +61,34 @@ export class UserComponent implements OnInit {
           this.posts = this.postService.getAllUserPosts(this.user.id, true);
           this.fosters = this.postService.getAllFosterPosts(this.user.id)
         }
-
+      },
+      error: () => {
+        console.log('Failure Response')
       }
     });
-
   }
 
   connect() {
     this.connectionService.connect(this.user.id).subscribe({
-      complete: () => {
+      next: () => {
         console.log('connection request sent successfully')
-      }, error: () => {
-        console.log('connection request failed')
-      }, next: () => {
         window.location.reload();
+      },
+      error: () => {
+        console.log('connection request failed')
       }
     });
   }
 
   deleteConnection() {
     this.connectionService.deleteConnection(this.user.id).subscribe({
-      complete: () => {
+      next: () => {
         console.log('connection deleted successfully')
-      }, error: () => {
-        console.log('connection deletion failed')
-      }, next: () => {
         window.location.reload();
         //this.router.navigateByUrl('/').then(() => console.log('redirecting to home'))
+      },
+      error: () => {
+        console.log('connection deletion failed')
       }
     });
   }
@@ -106,17 +103,15 @@ export class UserComponent implements OnInit {
 
   deletePost(postId: string) {
     this.postService.deletePost(postId).subscribe({
-      complete: () => {
+      next: () => {
         console.log('post deleted successfully')
-      }, error: () => {
-        console.log('post deletion failed')
-      }, next: () => {
         window.location.reload();
         //this.router.navigateByUrl('/').then(() => console.log('redirecting to home'))
+      },
+      error: () => {
+        console.log('post deletion failed')
       }
     });
-
   }
-
 
 }

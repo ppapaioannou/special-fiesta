@@ -1,0 +1,33 @@
+<div class="header" xmlns="http://www.w3.org/1999/html">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1><a href="" class="title"> Rescue</a></h1>
+      </div>
+      <div class="col-md-6" *ngIf="authService.isAuthenticated()">
+        <ul class="account nav nav-pills">
+          <li class="nav-item dropdown">
+            <a class="title nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-target="dropdown" href="#" role="button" aria-expanded="false">Account</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="user/{{userId}}">Profile</a></li>
+              <li><a class="dropdown-item" href="user/{{userId}}#posts">My Posts</a></li>
+              <li><a class="dropdown-item" href="user/{{userId}}#notifications">Notifications</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a href="/community" class="new-post">Community</a>
+        <a href="/add-post" class="new-post">Add Post</a>
+      </div> <!-- Add Post and Logout -->
+      <div *ngIf="authService.isAuthenticated()">
+        <a href="/near-me" class="filter btn">Near Me</a>
+        <a href="/filter" class="filter btn">Filter</a>
+      </div>
+      <div class="col-md-6" *ngIf="!authService.isAuthenticated()">
+        <a href="/login" class="login btn btn-default">Login</a>
+        <a href="/register" class="register btn btn-default">Register</a>
+      </div>
+    </div>
+  </div>
+</div>

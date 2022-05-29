@@ -4,14 +4,12 @@ import {
   ElementRef,
   EventEmitter,
   Injectable,
-  Input,
   OnInit,
   Output,
   ViewChild
 } from '@angular/core';
 import {GoogleMap} from "@angular/google-maps";
-import {toNumbers} from "@angular/compiler-cli/src/version_helpers";
-import {LocationPayload} from "../../payloads/location-payload";
+import {LocationPayload} from "../../payload/location-payload";
 
 @Component({
   selector: 'app-map',
@@ -32,7 +30,7 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   latitude: number;
   longitude: number;
-  address: String;
+  address: string;
 
   geoCoder!: google.maps.Geocoder;
 
@@ -122,9 +120,8 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   getAddress(latitude:number, longitude:number) {
-    this.geoCoder.geocode({ 'location': { lat: Number(latitude), lng: Number(longitude) } }, (results, status) => {
-      //console.log(results);
-      //console.log(status);
+    this.geoCoder.geocode({'location': {lat: Number(latitude), lng: Number(longitude)}},
+      (results, status) => {
       if (status === 'OK') {
         if (results) {
           this.address = results[0].formatted_address;
@@ -135,8 +132,8 @@ export class MapComponent implements OnInit, AfterViewInit {
         window.alert('Geocoder failed due to: ' + status);
       }
 
-    });
-  }
+    }).then(() => console.log('setting address'));
+   }
 
   setLocation() {
     this.locationPayload.latitude = this.latitude.toString();

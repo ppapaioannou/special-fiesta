@@ -1,0 +1,21 @@
+.preview{
+  width: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.rescue-mode-thumbnail{
+  width: 250px; /* Set a small width */
+}
+
+.new-event{
+  margin-top: 10px;
+}
+
+.event-thumbnail{
+  width: 400px;
+}
+

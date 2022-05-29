@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
-import {NotificationPayload} from "../../payloads/notification-payload";
-import {NotificationService} from "../../services/notification.service";
+import {NotificationPayload} from "../../payload/notification-payload";
+import {NotificationService} from "../../service/notification.service";
 
 @Component({
   selector: 'app-notifications',
@@ -19,27 +19,25 @@ export class NotificationsComponent implements OnInit {
   }
 
   read(notificationId: string) {
-    //this.connectionService.acceptConnection(userId);
     this.notificationService.read(notificationId).subscribe({
-      complete: () => {
+      next: () => {
         console.log('notification read successfully')
-      }, error: () => {
-        console.log('notification read failed')
-      }, next: () => {
         window.location.reload();
+      },
+      error: () => {
+        console.log('notification read failed')
       }
     });
   }
 
   delete(notificationId: string) {
-    //this.connectionService.acceptConnection(userId);
     this.notificationService.delete(notificationId).subscribe({
-      complete: () => {
+      next: () => {
         console.log('notification deleted successfully')
-      }, error: () => {
-        console.log('notification deletion failed')
-      }, next: () => {
         window.location.reload();
+      },
+      error: () => {
+        console.log('notification deletion failed')
       }
     });
   }

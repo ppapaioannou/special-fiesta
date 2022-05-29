@@ -6,12 +6,17 @@
           <img src="{{user.profileImage}}" alt="" width="250px"/>
           <div class="form-group">
             <label class="post-images">Change Profile Image</label>
-            <input type="file" accept="image/*" (change)="previewImages($event)" class="form-control" required="false"/>
+            <input type="file" accept="image/*" (change)="imageService.previewImages(previews, request, $event)"
+                   class="form-control" required="false"/>
+          </div>
+          <div>
+            <img *ngFor='let preview of previews' [src]="preview" class="preview" alt="uploaded image preview">
           </div>
         </div>
         <div class="col form-group">
           <label class="profile-name">Name</label>
-          <input type="text" [formControlName]="'name'" [(ngModel)]="user.name" class="form-control" placeholder="Write your name" required="false"/>
+          <input type="text" [formControlName]="'name'" [(ngModel)]="user.name" class="form-control"
+                 placeholder="Write your name" required="false"/>
 
           <div *ngIf="user.accountType == 'INDIVIDUAL'">
             <label class="profile-dateOfBirth">Date of Birth</label>
@@ -19,38 +24,45 @@
           </div>
           <div *ngIf="user.accountType == 'ORGANIZATION'">
             <label class="profile-contactEmail">Contact Email</label>
-            <input type="text" [formControlName]="'contactEmail'" [(ngModel)]="user.contactEmail" class="form-control" placeholder="Write your contact email." required="false"/>
+            <input type="text" [formControlName]="'contactEmail'" [(ngModel)]="user.contactEmail" class="form-control"
+                   placeholder="Write your contact email." required="false"/>
           </div>
 
         </div>
         <div class="col form-group">
           <div *ngIf="user.accountType == 'INDIVIDUAL'">
             <label class="profile-lastName">Last Name</label>
-            <input type="text" [formControlName]="'lastName'" [(ngModel)]="user.lastName" class="form-control" placeholder="Write your last name" required="false"/>
+            <input type="text" [formControlName]="'lastName'" [(ngModel)]="user.lastName" class="form-control"
+                   placeholder="Write your last name" required="false"/>
           </div>
           <label class="profile-number">
             {{user.accountType == 'INDIVIDUAL' ? 'Phone Number' : 'Contact Phone'}}</label>
-          <input type="text" [formControlName]="'phoneNumber'" [(ngModel)]="user.phoneNumber" class="form-control" placeholder="Add your phone number" required="false"/>
+          <input type="text" [formControlName]="'phoneNumber'" [(ngModel)]="user.phoneNumber" class="form-control"
+                 placeholder="Add your phone number" required="false"/>
 
         </div>
         <div class="row">
           <div *ngIf="user.accountType == 'ORGANIZATION'">
             <label class="profile-websiteUrl">Website URL</label>
-            <input type="text" [formControlName]="'websiteUrl'" [(ngModel)]="user.websiteUrl" class="form-control" placeholder="Add your website" required="false"/>
+            <input type="text" [formControlName]="'websiteUrl'" [(ngModel)]="user.websiteUrl" class="form-control"
+                   placeholder="Add your website" required="false"/>
           </div>
           <div *ngIf="user.accountType == 'ORGANIZATION'">
             <label class="profile-facebookPageUrl">Facebook Page URL</label>
-            <input type="text" [formControlName]="'facebookPageUrl'" [(ngModel)]="user.facebookPageUrl" class="form-control" placeholder="Add your facebook page" required="false"/>
+            <input type="text" [formControlName]="'facebookPageUrl'" [(ngModel)]="user.facebookPageUrl" class="form-control"
+                   placeholder="Add your facebook page" required="false"/>
           </div>
         </div>
         <div class="row">
           <label class="profile-description">
             {{user.accountType == 'INDIVIDUAL' ? 'About Me' : 'Organization Description'}}</label>
-          <textarea type="text" [formControlName]="'description'" [(ngModel)]="user.description" class="form-control" placeholder="Describe yourself so others know what are you like." required="true"></textarea>
+          <textarea type="text" [formControlName]="'description'" [(ngModel)]="user.description" class="form-control"
+                    placeholder="Describe yourself so others know what are you like." required="true"></textarea>
         </div>
         <div *ngIf="user.accountType == 'ORGANIZATION'" class="row">
           <label class="profile-needs">Organization Needs</label>
-          <textarea type="text" [formControlName]="'organizationNeeds'" [(ngModel)]="user.organizationNeeds" class="form-control" placeholder="Describe your needs as an organization, so that other users can contribute." required="true"></textarea>
+          <textarea type="text" [formControlName]="'organizationNeeds'" [(ngModel)]="user.organizationNeeds" class="form-control"
+                    placeholder="Describe your needs as an organization, so that other users can contribute." required="true"></textarea>
         </div>
       </div>
       <div class="form-group">

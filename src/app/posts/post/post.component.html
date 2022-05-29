@@ -1,9 +1,9 @@
-<div class="content">
+<div *ngIf="post.postType != 'event'" class="content">
   <div class="container">
     <div class="row">
       <div class="col-md">
         <h1 class="blog-title">{{post.title}}</h1>
-        <p>by {{post.username}}</p>
+        <p> by <a href="/user/{{post.userId}}"> {{post.username}}</a></p>
         <p>posted on: {{post.createdAt}}</p>
         <div class="main-div d-flex">
           <ul class="list-group list-group-flush" *ngFor="let image of postImages | async">
@@ -47,10 +47,56 @@
           <p [innerHTML]="post.body"></p>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <a href="/discussion/{{post.id}}" class="contact btn btn-primary">Discussion ({{post.numberOfComments}})</a>
+          <a type="button" class="btn btn-primary" href="/discussion/{{post.id}}">
+            Discussion <span class="badge badge-light">{{post.numberOfComments}}</span>
+          </a>
         </div>
       </div>
     </div>
     <a href="" class="back btn btn-secondary">Back</a>
   </div>
 </div>
+
+<div *ngIf="post.postType == 'event'" class="content">
+  <div class="container">
+    <div class="main-div">
+      <ul class="list-group list-group-flush" *ngFor="let image of postImages | async">
+        <li class="list-group-item">
+          <img class="event-image" src="{{image.url}}" alt="{{image.name}}"/>
+        </li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="col-md">
+        <h1 class="blog-title">{{post.title}}</h1>
+        <p> by <a href="/user/{{post.userId}}"> {{post.username}}</a></p>
+        <p>posted on: {{post.createdAt}}</p>
+        <hr>
+        <div>
+          <h5>Location: {{post.address}}</h5>
+          <h5>Date: {{post.date}}</h5>
+          <h5>Time: {{post.time}}</h5>
+          <h6>{{post.eventAttendees}} people are attending</h6>
+          <!-- TODO make including you dynamic and do something about the will not attend, maybe a toggle?-->
+          <p>including you!</p>
+          <div *ngIf="authService.isAuthenticated()" class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="contact btn btn-danger" (click)="willNotAttendEvent()">Will Not Attend</button>
+            <button href="#" class="contact btn btn-success" (click)="willAttendEvent()">Will Attend</button>
+          </div>
+
+        </div>
+        <hr>
+        <div class="breaking">
+          <p [innerHTML]="post.body"></p>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <a type="button" class="btn btn-primary" href="/discussion/{{post.id}}">
+            Discussion <span class="badge badge-light">{{post.numberOfComments}}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <a href="" class="back btn btn-secondary">Back</a>
+  </div>
+</div>
+

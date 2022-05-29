@@ -10,3 +10,9 @@
 .justify-content-between {
   justify-content: space-between;
 }
+
+.event-image{
+  margin-left: 13%;
+  max-width:70%;
+  height:auto
+}

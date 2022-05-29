@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup} from "@angular/forms";
-import {CommentService} from "../../../services/comment.service";
-import {PostPayload} from "../../../payloads/post-payload";
-import {CommentPayload} from "../../../payloads/comment-payload";
+import {CommentService} from "../../../service/comment.service";
+import {CommentPayload} from "../../../payload/comment-payload";
 
 @Component({
   selector: 'app-add-comment',
@@ -37,13 +36,14 @@ export class AddCommentComponent implements OnInit {
 
   addComment(): void {
     this.commentPayload.body = this.addCommentForm.value.body
+
     this.commentService.addComment(this.postId, this.commentPayload).subscribe({
-      complete: () => {
+      next: () => {
         console.log('commented successfully')
-      }, error: () => {
-        console.log('comment upload failed')
-      }, next: () => {
         this.router.navigateByUrl('/discussion/' + this.postId).then(() => console.log('redirecting back to post comments'))
+      },
+      error: () => {
+        console.log('comment upload failed')
       }
     });
   }
