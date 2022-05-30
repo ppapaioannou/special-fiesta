@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {UserPayload} from "../../payload/user-payload";
 import {ConnectionService} from "../../service/connection.service";
 import {AuthService} from "../../service/auth.service";
+import {ConnectionPayload} from "../../payload/connection-payload";
 
 @Component({
   selector: 'app-connections',
@@ -11,11 +12,11 @@ import {AuthService} from "../../service/auth.service";
 })
 export class ConnectionsComponent implements OnInit {
 
-  friendRequests!: Observable<Array<UserPayload>>;
-  friends!: Observable<Array<UserPayload>>;
-  organizations!: Observable<Array<UserPayload>>;
+  friendRequests!: Observable<Array<ConnectionPayload>>;
+  friends!: Observable<Array<ConnectionPayload>>;
+  organizations!: Observable<Array<ConnectionPayload>>;
 
-  followers!: Observable<Array<UserPayload>>;
+  followers!: Observable<Array<ConnectionPayload>>;
 
   accountType: string;
 
@@ -25,12 +26,12 @@ export class ConnectionsComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.accountType == 'INDIVIDUAL') {
-      this.friendRequests = this.connectionService.getAllFriendRequests();
-      this.friends = this.connectionService.getAllFriends();
-      this.organizations = this.connectionService.getAllOrganizations();
+      this.friendRequests = this.connectionService.getAllConnections('friend-requests');
+      this.friends = this.connectionService.getAllConnections('friends');
+      this.organizations = this.connectionService.getAllConnections('organizations');
     }
     else if (this.accountType == 'ORGANIZATION') {
-      this.followers = this.connectionService.getAllFollowers();
+      this.followers = this.connectionService.getAllConnections('followers');
     }
   }
 

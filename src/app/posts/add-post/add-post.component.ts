@@ -82,7 +82,7 @@ export class AddPostComponent implements OnInit {
       time: "",
       title: "",
       userId: "",
-      username: ""
+      userName: ""
     };
   }
 

@@ -12,7 +12,7 @@ export interface PostPayload {
   latitude: string;
   longitude: string;
   distance: number;
-  username: string;
+  userName: string;
   userId: string;
 
   //animal characteristics

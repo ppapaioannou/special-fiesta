@@ -13,10 +13,10 @@ export class CommentService {
   constructor(private httpClient: HttpClient) { }
 
   addComment(postId: Number, body: CommentPayload) {
-    return this.httpClient.post(this.url + 'add/' + postId, body);
+    return this.httpClient.post(this.url, body);
   }
 
   getAllComments(postId: Number): Observable<Array<CommentPayload>> {
-    return this.httpClient.get<Array<CommentPayload>>(this.url + 'post-comments/' + postId);
+    return this.httpClient.get<Array<CommentPayload>>(this.url + 'post/' + postId + '/all');
   }
 }

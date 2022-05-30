@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row" *ngFor="let comment of comments | async">
       <div class="discussion">
-        <h6>{{comment.username}} said on {{comment.createdAt}}:</h6>
+        <h6><a href="user/{{comment.userId}}">{{comment.userName}}</a> said on {{comment.createdAt}}:</h6>
         <p [innerHTML]="comment.body"></p>
       </div>
       <hr>

@@ -13,8 +13,8 @@ export const appProperties = {
   ],
 
   animalTypesFilter : [
-    { id: 1, name: "Dog" },
-    { id: 2, name: "Cat" },
+    { id: 1, name: "Dogs" },
+    { id: 2, name: "Cats" },
     { id: 3, name: "Any"}
   ],
 
@@ -44,7 +44,8 @@ export const appProperties = {
 
   genders: [
     {id: 1, name: "Male"},
-    {id: 2, name: "Female"}
+    {id: 2, name: "Female"},
+    {id: 3, name: "Unknown"}
   ],
 
   gendersFilter: [

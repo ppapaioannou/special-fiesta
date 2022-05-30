@@ -18,6 +18,7 @@ export class UserComponent implements OnInit {
   user: UserPayload;
   permalink!: Number;
   isConnectedTo = false;
+  connectionInProgress = false;
 
   posts!: Observable<Array<PostPayload>>;
   fosters!: Observable<Array<PostPayload>>;
@@ -52,7 +53,8 @@ export class UserComponent implements OnInit {
       next: (data:UserPayload) => {
         this.user = data;
         this.connectionService.isConnectedTo(this.user.id).subscribe((data:boolean) => {
-          this.isConnectedTo = data
+          this.isConnectedTo = data;
+          this.connectionInProgress = data;
         });
         if (this.user.accountType == "INDIVIDUAL") {
           this.posts = this.postService.getAllUserPosts(this.user.id, false);

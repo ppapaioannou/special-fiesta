@@ -45,7 +45,7 @@ export class PostComponent implements OnInit {
       time: "",
       title: "",
       userId: "",
-      username: ""
+      userName: ""
     }
   }
 
@@ -63,6 +63,8 @@ export class PostComponent implements OnInit {
     });
 
     this.postImages = this.imageService.getPostImages(this.permalink);
+    //console.log(this.postImages.);
+    //this.thumbnail = this.postImages.get(0);
   }
 
   willNotAttendEvent() {

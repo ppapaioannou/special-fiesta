@@ -48,14 +48,6 @@ export class AuthService {
     return this.localStorageService.retrieve('role')
   }
 
-  /*
-  isPostOwner(username: String): boolean {
-    //TODO
-    //console.log(this.localStorageService.retrieve('email'))
-    return true;
-  }
-  */
-
   isOwnUserPage(email: String): boolean {
     return this.localStorageService.retrieve('email') == email;
   }

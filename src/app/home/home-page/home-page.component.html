@@ -16,7 +16,7 @@
           <div *ngIf="post.id != '0'" class="home">
             <h3><span class="badge bg-warning">{{post.postType}}</span>&nbsp;<a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
             <div>
-              <i class="fas fa-user"></i> By: <a href="/user/{{post.userId}}" class="post-user"> {{post.username}} </a>
+              <i class="fas fa-user"></i> By: <a href="/user/{{post.userId}}" class="post-user"> {{post.userName}} </a>
             </div>
             <img class="rescue-mode-thumbnail" src="{{post.thumbnail}}" alt=""/>
             <div *ngIf="post.postType=='missing'">
@@ -61,7 +61,7 @@
           <div class="home">
             <h3><a href="/event/{{event.id}}" class="blog-title">{{event.title}}</a></h3>
             <div>
-              <i class="fas fa-user"></i> By: <a href="/user/{{event.userId}}" class="post-user"> {{event.username}} </a>
+              <i class="fas fa-user"></i> By: <a href="/user/{{event.userId}}" class="post-user"> {{event.userName}} </a>
             </div>
             <img class="event-thumbnail" src="{{event.thumbnail}}" alt=""/>
             <div>

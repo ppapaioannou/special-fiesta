@@ -79,11 +79,10 @@
 
         <br>
         <div *ngIf="authService.getUserRole() == 'INDIVIDUAL'">
-          <button *ngIf="!authService.isOwnUserPage(user.email) && !isConnectedTo"
-                  type="button" class="btn-lg btn-primary" (click)="connect()">
+          <p *ngIf="connectionInProgress">Connection request in progress, go to your Connections page to respond.</p>
+          <button *ngIf="!isConnectedTo && !connectionInProgress" type="button" class="btn-lg btn-primary" (click)="connect()">
             {{user.accountType == 'INDIVIDUAL' ? 'Add Friend' : 'Follow Organization'}}</button>
-          <button *ngIf="isConnectedTo"
-                  type="button" class="btn-lg btn-danger" (click)="deleteConnection()">
+          <button *ngIf="isConnectedTo" type="button" class="btn-lg btn-danger" (click)="deleteConnection()">
             {{user.accountType == 'INDIVIDUAL' ? 'Remove Friend' : 'Unfollow Organization'}}</button>
         </div>
         <button *ngIf="!authService.isOwnUserPage(user.email)"

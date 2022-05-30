@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserPayload} from "../payload/user-payload";
+import {ConnectionPayload} from "../payload/connection-payload";
 
 @Injectable({
   providedIn: 'root'
@@ -16,31 +17,22 @@ export class ConnectionService {
     return this.httpClient.post(this.url + 'with/' + userId, '');
   }
 
-  deleteConnection(userId: string) {
-    return this.httpClient.delete(this.url + 'delete/' + userId);
+  getAllConnections(connectionType: string): Observable<Array<ConnectionPayload>> {
+    return this.httpClient.get<Array<ConnectionPayload>>(this.url + connectionType);
   }
 
-  getAllFriendRequests(): Observable<Array<UserPayload>> {
-    return this.httpClient.get<Array<UserPayload>>(this.url + 'friend-requests');
-  }
-
-  getAllFriends(): Observable<Array<UserPayload>> {
-    return this.httpClient.get<Array<UserPayload>>(this.url + 'friends');
-  }
-
-  getAllOrganizations(): Observable<Array<UserPayload>> {
-    return this.httpClient.get<Array<UserPayload>>(this.url + 'organizations');
-  }
-
-  getAllFollowers(): Observable<Array<UserPayload>> {
-    return this.httpClient.get<Array<UserPayload>>(this.url + 'followers');
+  isConnectedTo(userId: string): Observable<any> {
+    return this.httpClient.get(this.url + 'is-connected-to/' + userId);
   }
 
   acceptConnection(userId: string) {
     return this.httpClient.put(this.url + 'accept/' + userId, '');
   }
 
-  isConnectedTo(userId: string): Observable<any> {
-    return this.httpClient.get(this.url + 'is-connected-to/' + userId);
+
+
+  deleteConnection(userId: string) {
+    return this.httpClient.delete(this.url + 'delete/' + userId);
   }
+
 }

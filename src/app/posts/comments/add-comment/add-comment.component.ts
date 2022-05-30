@@ -10,7 +10,7 @@ import {CommentPayload} from "../../../payload/comment-payload";
   styleUrls: ['./add-comment.component.css']
 })
 export class AddCommentComponent implements OnInit {
-  postId!: Number;
+  postId!: number;
   addCommentForm: FormGroup;
   commentPayload: CommentPayload;
   body = new FormControl();
@@ -20,11 +20,12 @@ export class AddCommentComponent implements OnInit {
       body: this.body
     });
     this.commentPayload = {
+      id: 0,
+      postId: 0,
       body: "",
-      createdAt: "",
-      username: "",
-      postId: ""
-
+      userId: 0,
+      userName: "",
+      createdAt: ""
     }
   }
 
@@ -35,6 +36,7 @@ export class AddCommentComponent implements OnInit {
   }
 
   addComment(): void {
+    this.commentPayload.postId = this.postId;
     this.commentPayload.body = this.addCommentForm.value.body
 
     this.commentService.addComment(this.postId, this.commentPayload).subscribe({

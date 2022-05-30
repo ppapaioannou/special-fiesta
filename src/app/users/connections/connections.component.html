@@ -8,8 +8,8 @@
           <div class="card-block">
             <img src="{{friendRequest.profileImage}}" alt="" width="150px"/>
           </div>
-          <a href="user/{{friendRequest.id}}">{{friendRequest.name}} {{friendRequest.lastName}}</a>
-          <button class="btn-primary" type="button" (click)="acceptFriendRequest(friendRequest.id)">Accept</button>
+          <a href="user/{{friendRequest.userId}}">{{friendRequest.name}} {{friendRequest.lastName}}</a>
+          <button class="btn-primary" type="button" (click)="acceptFriendRequest(friendRequest.userId)">Accept</button>
           <button class="btn-danger" type="button" (click)="declineFriendRequest()">Decline</button>
         </div>
       </div>
@@ -24,7 +24,7 @@
           <div class="card-block">
             <img src="{{friend.profileImage}}" alt="" width="150px"/>
           </div>
-          <a href="user/{{friend.id}}">{{friend.name}} {{friend.lastName}}</a>
+          <a href="user/{{friend.userId}}">{{friend.name}} {{friend.lastName}}</a>
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@
           <div class="card-block">
             <img src="{{organization.profileImage}}" alt="" width="150px"/>
           </div>
-          <a href="user/{{organization.id}}">{{organization.name}}</a>
+          <a href="user/{{organization.userId}}">{{organization.name}}</a>
         </div>
       </div>
     </div>
@@ -54,7 +54,7 @@
           <div class="card-block">
             <img src="{{follower.profileImage}}" alt="" width="150px"/>
           </div>
-          <a href="user/{{follower.id}}">{{follower.name}} {{follower.lastName}}</a>
+          <a href="user/{{follower.userId}}">{{follower.name}} {{follower.lastName}}</a>
         </div>
       </div>
     </div>
