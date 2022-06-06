@@ -38,6 +38,10 @@ export class NearMeComponent implements OnInit {
   }
 
   updateDistance() {
+    if (this.locationPayload.diameterInMeters == "inf") {
+      //earth diameter in meters
+      this.locationPayload.diameterInMeters = "12742000";
+    }
     this.userService.updateUserLocation(this.locationPayload).subscribe({
       next: () => {
         console.log('user location updated successfully')
