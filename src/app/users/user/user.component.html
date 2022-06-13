@@ -2,18 +2,19 @@
   <div class="container">
     <div class="d-flex align-items-start">
       <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tab-list" aria-orientation="vertical">
-        <button class="nav-link active" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
-        <button class="nav-link" id="v-pills-posts-tab" data-bs-toggle="pill" data-bs-target="#v-pills-posts" type="button" role="tab" aria-controls="v-pills-posts" aria-selected="false">Posts</button>
+        <button [ngClass]="{'active': tab && tab === 'profile'}" class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
+        <button [ngClass]="{'active': tab && tab === 'posts'}" class="nav-link" id="v-pills-posts-tab" data-bs-toggle="pill" data-bs-target="#v-pills-posts" type="button" role="tab" aria-controls="v-pills-posts" aria-selected="false">Posts</button>
         <button class="nav-link" id="v-pills-connections-tab" data-bs-toggle="pill" data-bs-target="#v-pills-connections" type="button" role="tab" aria-controls="v-pills-connections" aria-selected="false">Connections</button>
-        <button class="nav-link" id="v-pills-notifications-tab" data-bs-toggle="pill" data-bs-target="#v-pills-notifications" type="button" role="tab" aria-controls="v-pills-notifications" aria-selected="false">Notifications</button>
+        <button [ngClass]="{'active': tab && tab === 'notifications'}" class="nav-link" id="v-pills-notifications-tab" data-bs-toggle="pill" data-bs-target="#v-pills-notifications" type="button" role="tab" aria-controls="v-pills-notifications" aria-selected="false">Notifications</button>
         <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
       </div>
       <div class="tab-content" id="v-pills-tabContent">
-        <div class="tab-pane fade show active" id="v-pills-profile" role="tab-panel" aria-labelledby="v-pills-profile-tab" tabindex="0">
+        <div [ngClass]="{'show active': tab && tab === 'profile'}" class="tab-pane fade" id="v-pills-profile" role="tab-panel" aria-labelledby="v-pills-profile-tab" tabindex="0">
           <app-profile></app-profile>
         </div>
         <div class="tab-pane fade" id="v-pills-posts" role="tab-panel" aria-labelledby="v-pills-posts-tab" tabindex="1">
-          <div class="row" *ngFor="let post of posts | async">
+          <h2>My Posts</h2>
+          <div [ngClass]="{'show active': tab && tab === 'posts'}" class="row" *ngFor="let post of posts | async">
             <div class="home">
               <h3><span class="badge rounded-pill bg-warning">{{post.postType}}</span>&nbsp;<a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
               <img class="thumbnail" src="{{post.thumbnail}}" alt=""/>
@@ -37,7 +38,7 @@
         <div class="tab-pane fade" id="v-pills-connections" role="tab-panel" aria-labelledby="v-pills-connections-tab" tabindex="2">
           <app-connections></app-connections>
         </div>
-        <div class="tab-pane fade" id="v-pills-notifications" role="tab-panel" aria-labelledby="v-pills-notifications-tab" tabindex="3">
+        <div [ngClass]="{'show active': tab && tab === 'notifications'}" class="tab-pane fade" id="v-pills-notifications" role="tab-panel" aria-labelledby="v-pills-notifications-tab" tabindex="3">
           <app-notifications></app-notifications>
         </div>
         <div class="tab-pane fade" id="v-pills-settings" role="tab-panel" aria-labelledby="v-pills-settings-tab" tabindex="4">

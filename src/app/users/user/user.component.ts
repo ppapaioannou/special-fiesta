@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PostPayload} from "../../payload/post-payload";
 import {UserService} from "../../service/user.service";
 import {UserPayload} from "../../payload/user-payload";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../service/auth.service";
 import {ConnectionService} from "../../service/connection.service";
 import {Observable} from "rxjs";
@@ -15,6 +15,8 @@ import {PostService} from "../../service/post.service";
 })
 export class UserComponent implements OnInit {
 
+  tab: string;
+
   user: UserPayload;
   permalink!: Number;
   isConnectedTo = false;
@@ -25,7 +27,8 @@ export class UserComponent implements OnInit {
 
   constructor(private aRoute: ActivatedRoute, private userService: UserService,
               public authService: AuthService, private connectionService: ConnectionService,
-              private postService: PostService) {
+              private postService: PostService, private router: Router) {
+    this.tab = "";
     this.user = {
       accountType: "",
       communityStanding: "",
@@ -47,6 +50,19 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     this.aRoute.params.subscribe(params => {
       this.permalink = params['id'];
+    });
+
+    this.aRoute.queryParams.subscribe((params) => {
+      //this.tab = params['tab'];
+      if (params['tab']) {
+        this.tab = params['tab'];
+        this.router.navigate([], {
+          queryParams: {
+            tab: null,
+          },
+          queryParamsHandling: 'merge',
+        });
+      }
     });
 
     this.userService.getUser(this.permalink).subscribe({
