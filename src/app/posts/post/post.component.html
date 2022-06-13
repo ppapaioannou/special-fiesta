@@ -5,7 +5,7 @@
         <h1 class="blog-title">{{post.title}}</h1>
         <p> by <a href="/user/{{post.userId}}"> {{post.userName}}</a></p>
         <p>posted on: {{post.createdAt}}</p>
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div *ngIf="post.thumbnail != null" id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <figure class="text-center">
               <ul class="carousel-item active">
@@ -28,8 +28,8 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
+          <br>
         </div>
-        <br>
         <div *ngIf="post.postType=='missing'">
           <h5>Location: {{post.address}}</h5>
           <h5>Missing Date: {{post.date}}</h5>
