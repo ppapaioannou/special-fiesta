@@ -23,9 +23,9 @@ export interface PostPayload {
   colors: string[];
   age: string;
   microchipNumber: string;
-  neutered: boolean;
-  goodWithAnimals: boolean;
-  goodWithChildren: boolean;
+  neutered: string;
+  goodWithAnimals: string;
+  goodWithChildren: string;
   actionTaken: string;
 
   //event appProperties

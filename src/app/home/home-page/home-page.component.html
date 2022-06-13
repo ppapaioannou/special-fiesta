@@ -14,7 +14,7 @@
       <div class="tab-pane fade show active" id="pills-rescue-mode" role="tabpanel" aria-labelledby="pills-rescue-mode-tab" tabindex="0">
         <div class="row" *ngFor="let post of posts">
           <div *ngIf="post.id != '0'" class="home">
-            <h3><span class="badge bg-warning">{{post.postType}}</span>&nbsp;<a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
+            <h3><span class="badge rounded-pill bg-warning">{{post.postType}}</span>&nbsp;<a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
             <div>
               <i class="fas fa-user"></i> By: <a href="/user/{{post.userId}}" class="post-user"> {{post.userName}} </a>
             </div>
@@ -58,7 +58,7 @@
           <a class="new-event btn btn-success d-md-block" href="add-post/event">Create New Event </a>
         </div>
         <div class="row" *ngFor="let event of events | async">
-          <div class="home">
+          <div *ngIf="event.id != '0'" class="home">
             <h3><a href="/event/{{event.id}}" class="blog-title">{{event.title}}</a></h3>
             <div>
               <i class="fas fa-user"></i> By: <a href="/user/{{event.userId}}" class="post-user"> {{event.userName}} </a>

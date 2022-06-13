@@ -91,23 +91,23 @@
       <div *ngIf="postType == 'adoption'">
         <div>
           <label>Neutered:&ensp;</label>
-          <input type="radio" [formControlName]="'neutered'" [value]="true"/>
+          <input type="radio" [formControlName]="'neutered'" [value]="'Yes'"/>
           Yes
-          <input type="radio" [formControlName]="'neutered'" [value]="false"/>
+          <input type="radio" [formControlName]="'neutered'" [value]="'No'"/>
           No
         </div>
         <div>
           <label>Suitable for living with children:&ensp;</label>
-          <input type="radio" [formControlName]="'goodWithChildren'" [value]="true"/>
+          <input type="radio" [formControlName]="'goodWithChildren'" [value]="'Yes'"/>
           Yes
-          <input type="radio" [formControlName]="'goodWithChildren'" [value]="false"/>
+          <input type="radio" [formControlName]="'goodWithChildren'" [value]="'No'"/>
           No
         </div>
         <div>
           <label>Suitable for coexistence with other animals:&ensp;</label>
-          <input type="radio" [formControlName]="'goodWithAnimals'" [value]="true"/>
+          <input type="radio" [formControlName]="'goodWithAnimals'" [value]="'Yes'"/>
           Yes
-          <input type="radio" [formControlName]="'goodWithAnimals'" [value]="false"/>
+          <input type="radio" [formControlName]="'goodWithAnimals'" [value]="'No'"/>
           No
         </div>
       </div>

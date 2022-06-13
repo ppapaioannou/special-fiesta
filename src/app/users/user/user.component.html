@@ -15,7 +15,7 @@
         <div class="tab-pane fade" id="v-pills-posts" role="tab-panel" aria-labelledby="v-pills-posts-tab" tabindex="1">
           <div class="row" *ngFor="let post of posts | async">
             <div class="home">
-              <h3><span class="badge bg-warning">{{post.postType}}</span>&nbsp;<a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
+              <h3><span class="badge rounded-pill bg-warning">{{post.postType}}</span>&nbsp;<a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
               <img class="thumbnail" src="{{post.thumbnail}}" alt=""/>
               <br>
               <button class="btn-primary" type="button" (click)="editPost()">Edit</button>
@@ -25,7 +25,7 @@
           </div>
           <div class="row" *ngFor="let post of fosters | async">
             <div class="home">
-              <h3><span class="badge bg-warning">{{post.postType}}</span>&nbsp;<a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
+              <h3><span class="badge rounded-pill bg-warning">{{post.postType}}</span>&nbsp;<a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
               <img class="thumbnail" src="{{post.thumbnail}}" alt=""/>
               <br>
               <button class="btn-primary" type="button" (click)="editPost()">Edit</button>
@@ -109,7 +109,7 @@
         <div class="tab-pane fade show active" id="posts" role="tab-panel" aria-labelledby="home-tab">
           <div class="row" *ngFor="let post of posts | async">
             <div class="home">
-              <h3><span class="badge bg-warning">{{post.postType}}</span>&nbsp;<a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
+              <h3><span class="badge rounded-pill bg-warning">{{post.postType}}</span>&nbsp;<a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
               <img class="thumbnail" src="{{post.thumbnail}}" alt=""/>
               <hr>
             </div>
@@ -118,7 +118,7 @@
         <div class="tab-pane fade" id="fosters" role="tab-panel" aria-labelledby="profile-tab">
           <div class="row" *ngFor="let foster of fosters | async">
             <div class="home">
-              <h3><span class="badge bg-warning">{{foster.postType}}</span>&nbsp;<a href="/post/{{foster.id}}" class="blog-title">{{foster.title}}</a></h3>
+              <h3><span class="badge rounded-pill bg-warning">{{foster.postType}}</span>&nbsp;<a href="/post/{{foster.id}}" class="blog-title">{{foster.title}}</a></h3>
               <img class="thumbnail" src="{{foster.thumbnail}}" alt=""/>
               <hr>
             </div>

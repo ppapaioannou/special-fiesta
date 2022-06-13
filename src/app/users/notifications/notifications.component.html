@@ -2,7 +2,7 @@
 <div class="row" *ngFor="let notification of notifications | async">
   <div class="notifications">
     <div *ngIf="notification.readAt == null">
-      <span class="badge bg-primary">NEW</span>
+      <span class="badge rounded-pill bg-primary">NEW</span>
     </div>
     <p>{{notification.createdAt}}</p>
     <p>{{notification.text}}, {{notification.post}}</p>
