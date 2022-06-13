@@ -1,3 +1,5 @@
+import {UserPayload} from "./user-payload";
+
 export interface PostPayload {
   //common
   id: string;
@@ -30,6 +32,6 @@ export interface PostPayload {
 
   //event appProperties
   time: string;
-  eventAttendees: string;
+  eventAttendees?: Array<UserPayload>;
   //private String address;
 }

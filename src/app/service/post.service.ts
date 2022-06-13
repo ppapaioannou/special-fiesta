@@ -61,7 +61,7 @@ export class PostService {
     return this.httpClient.get<PostPayload>(this.url + 'view/' + permalink);
   }
 
-  willAttendEvent(permalink: Number) {
+  attendEvent(permalink: Number) {
     return this.httpClient.put(this.url + "event/" + permalink + "/attend", "");
   }
 

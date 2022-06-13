@@ -66,7 +66,7 @@ export class AddPostComponent implements OnInit {
       createdAt: "",
       date: "",
       distance: 0,
-      eventAttendees: "",
+      eventAttendees: undefined,
       gender: "",
       goodWithAnimals: "",
       goodWithChildren: "",

@@ -16,8 +16,12 @@ export class PostComponent implements OnInit {
   postImages: any;
   permalink!: number;
 
+  numberOfAttendees?: number;
+  isAttending: boolean;
+
   constructor(private aRoute: ActivatedRoute, private postService: PostService,
               private imageService: ImageService, public authService: AuthService) {
+    this.isAttending = false;
     this.post = {
       actionTaken: "",
       address: "",
@@ -29,7 +33,7 @@ export class PostComponent implements OnInit {
       createdAt: "",
       date: "",
       distance: 0,
-      eventAttendees: "",
+      eventAttendees: [],
       gender: "",
       goodWithAnimals: "",
       goodWithChildren: "",
@@ -59,24 +63,20 @@ export class PostComponent implements OnInit {
         console.log('Failure Response')
       }, next: (data:PostPayload) => {
         this.post = data;
+        this.numberOfAttendees = data.eventAttendees?.length;
+        this.isAttending = !!data.eventAttendees?.some(e => e.id === this.authService.getUserId());
       }
     });
 
     this.postImages = this.imageService.getPostImages(this.permalink);
-    //console.log(this.postImages.);
-    //this.thumbnail = this.postImages.get(0);
   }
 
-  willNotAttendEvent() {
-  }
-
-  willAttendEvent() {
-    this.postService.willAttendEvent(this.permalink).subscribe({
+  attendEvent() {
+    this.postService.attendEvent(this.permalink).subscribe({
       next: () => {
         console.log('response updated successfully')
         this.ngOnInit()
       }, error: () => {
-        // TODO add error?
         console.log('response update failed')
       },
     });
