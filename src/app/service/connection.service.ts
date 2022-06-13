@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {UserPayload} from "../payload/user-payload";
 import {ConnectionPayload} from "../payload/connection-payload";
 
 @Injectable({
@@ -29,10 +28,11 @@ export class ConnectionService {
     return this.httpClient.put(this.url + 'accept/' + userId, '');
   }
 
-
+  declineConnection(userId: string) {
+    return this.httpClient.delete(this.url + 'decline/' + userId);
+  }
 
   deleteConnection(userId: string) {
     return this.httpClient.delete(this.url + 'delete/' + userId);
   }
-
 }

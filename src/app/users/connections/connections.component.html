@@ -10,7 +10,7 @@
           </div>
           <a href="user/{{friendRequest.userId}}">{{friendRequest.name}} {{friendRequest.lastName}}</a>
           <button class="btn-primary" type="button" (click)="acceptFriendRequest(friendRequest.userId)">Accept</button>
-          <button class="btn-danger" type="button" (click)="declineFriendRequest()">Decline</button>
+          <button class="btn-danger" type="button" (click)="declineFriendRequest(friendRequest.userId)">Decline</button>
         </div>
       </div>
     </div>

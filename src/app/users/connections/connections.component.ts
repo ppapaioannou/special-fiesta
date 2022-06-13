@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
-import {UserPayload} from "../../payload/user-payload";
 import {ConnectionService} from "../../service/connection.service";
 import {AuthService} from "../../service/auth.service";
 import {ConnectionPayload} from "../../payload/connection-payload";
@@ -47,8 +46,16 @@ export class ConnectionsComponent implements OnInit {
     });
   }
 
-  declineFriendRequest() {
-    //this.connectionService.acceptConnection(userId);
+  declineFriendRequest(userId: string) {
+    this.connectionService.declineConnection(userId).subscribe({
+      next: () => {
+        console.log('friend request declined successfully')
+        this.ngOnInit();
+      },
+      error: () => {
+        console.log('friend request decline failed')
+      }
+    });
   }
 
 }
