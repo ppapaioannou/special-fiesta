@@ -28,7 +28,7 @@ export class UserComponent implements OnInit {
   constructor(private aRoute: ActivatedRoute, private userService: UserService,
               public authService: AuthService, private connectionService: ConnectionService,
               private postService: PostService, private router: Router) {
-    this.tab = "";
+    this.tab = "profile";
     this.user = {
       accountType: "",
       communityStanding: "",
@@ -90,7 +90,7 @@ export class UserComponent implements OnInit {
     this.connectionService.connect(this.user.id).subscribe({
       next: () => {
         console.log('connection request sent successfully')
-        window.location.reload();
+        this.ngOnInit()
       },
       error: () => {
         console.log('connection request failed')
@@ -102,7 +102,7 @@ export class UserComponent implements OnInit {
     this.connectionService.deleteConnection(this.user.id).subscribe({
       next: () => {
         console.log('connection deleted successfully')
-        window.location.reload();
+        this.ngOnInit()
         //this.router.navigateByUrl('/').then(() => console.log('redirecting to home'))
       },
       error: () => {
@@ -123,7 +123,7 @@ export class UserComponent implements OnInit {
     this.postService.deletePost(postId).subscribe({
       next: () => {
         console.log('post deleted successfully')
-        window.location.reload();
+        this.ngOnInit()
         //this.router.navigateByUrl('/').then(() => console.log('redirecting to home'))
       },
       error: () => {

@@ -39,7 +39,7 @@ export class ConnectionsComponent implements OnInit {
     this.connectionService.acceptConnection(userId).subscribe({
       next: () => {
         console.log('friend request accepted successfully')
-        window.location.reload();
+        this.ngOnInit();
       },
       error: () => {
         console.log('friend request accept failed')

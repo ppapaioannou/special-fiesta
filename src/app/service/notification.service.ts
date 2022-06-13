@@ -16,6 +16,10 @@ export class NotificationService {
     return this.httpClient.get<Array<NotificationPayload>>(this.url);
   }
 
+  getNumberOfUnreadNotifications() {
+    return this.httpClient.get<number>(this.url + "unread");
+  }
+
   read(notificationId: string) {
     return this.httpClient.put(this.url + notificationId, '');
   }

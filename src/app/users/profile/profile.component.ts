@@ -96,7 +96,7 @@ export class ProfileComponent implements OnInit {
     this.userService.updateUserInfo(this.request).subscribe({
       next: () => {
         console.log('user info updated successfully')
-        window.location.reload();
+        this.ngOnInit()
       },
       error: () => {
         console.log('error while updating user info')

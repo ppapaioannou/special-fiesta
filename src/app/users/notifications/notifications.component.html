@@ -1,13 +1,22 @@
-<h2>Notifications</h2>
+<h2>Notifications <span *ngIf="unreadNotifications != 0" class="badge bg-warning">{{unreadNotifications}}</span></h2>
+
 <div class="row" *ngFor="let notification of notifications | async">
   <div class="notifications">
     <div *ngIf="notification.readAt == null">
       <span class="badge rounded-pill bg-primary">NEW</span>
     </div>
     <p>{{notification.createdAt}}</p>
-    <p>{{notification.text}}, {{notification.post}}</p>
+    <div *ngIf="notification.post != null">
+      <p>{{notification.text}}: <a href="post/{{notification.postId}}">{{notification.post}}</a></p>
+
+    </div>
+
+    <div *ngIf="notification.post == null">
+      <p>{{notification.text}}</p>
+    </div>
+
     <p>From: {{notification.sender}}</p>
-    <button class="btn-primary" type="button" (click)="read(notification.id)">Read</button>
+    <button *ngIf="notification.readAt == null" class="btn-primary" type="button" (click)="read(notification.id)">Read</button>
     <button class="btn-danger" type="button" (click)="delete(notification.id)">Delete</button>
     <hr>
   </div>

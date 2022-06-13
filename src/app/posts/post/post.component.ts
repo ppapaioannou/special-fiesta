@@ -74,7 +74,7 @@ export class PostComponent implements OnInit {
     this.postService.willAttendEvent(this.permalink).subscribe({
       next: () => {
         console.log('response updated successfully')
-        window.location.reload();
+        this.ngOnInit()
       }, error: () => {
         // TODO add error?
         console.log('response update failed')
