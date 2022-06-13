@@ -16,7 +16,7 @@
         <div [ngClass]="{'show active': tab && tab === 'profile'}" class="tab-pane fade" id="v-pills-profile" role="tab-panel" aria-labelledby="v-pills-profile-tab" tabindex="0">
           <app-profile></app-profile>
         </div>
-        <div [ngClass]="{'show active': tab && tab === 'posts'}" class="row" class="tab-pane fade" id="v-pills-posts" role="tab-panel" aria-labelledby="v-pills-posts-tab" tabindex="1">
+        <div [ngClass]="{'show active': tab && tab === 'posts'}" class="row tab-pane fade" id="v-pills-posts" role="tab-panel" aria-labelledby="v-pills-posts-tab" tabindex="1">
           <h2>My Posts</h2>
           <div *ngFor="let post of posts | async">
             <div class="home">
@@ -70,7 +70,7 @@
           <div *ngIf="user.dateOfBirth != null">
             <p>Date of Birth: {{user.dateOfBirth}}</p>
           </div>
-          <div *ngIf="user.phoneNumber != ''">
+          <div *ngIf="user.phoneNumber != null">
             <p>Phone Number: {{user.phoneNumber}}</p>
           </div>
 
@@ -131,7 +131,7 @@
         </div>
         <div class="tab-pane fade" id="contact" role="tab-panel" aria-labelledby="contact-tab">
           Email: {{user.contactEmail}}
-          <div *ngIf="user.phoneNumber != ''">
+          <div *ngIf="user.phoneNumber != null">
             <p>Phone Number: {{user.phoneNumber}}</p>
           </div>
         </div>
