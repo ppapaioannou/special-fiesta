@@ -24,7 +24,6 @@ import { ConnectionsComponent } from './users/connections/connections.component'
 import { NotificationsComponent } from './users/notifications/notifications.component';
 import { CommunityComponent } from './users/community/community.component';
 import { ProfileComponent } from './users/profile/profile.component';
-import { SettingsComponent } from './users/settings/settings.component';
 import { LoginErrorComponent } from './errors/login-error/login-error.component';
 import { RegisterErrorComponent } from './errors/register-error/register-error.component';
 import { PostErrorComponent } from './errors/post-error/post-error.component';
@@ -53,7 +52,6 @@ import { AddPostComponent } from './posts/add-post/add-post.component';
     NotificationsComponent,
     CommunityComponent,
     ProfileComponent,
-    SettingsComponent,
     LoginErrorComponent,
     RegisterErrorComponent,
     PostErrorComponent,

@@ -13,7 +13,6 @@ import {ConnectionsComponent} from "./users/connections/connections.component";
 import {NotificationsComponent} from "./users/notifications/notifications.component";
 import {CommunityComponent} from "./users/community/community.component";
 import {ProfileComponent} from "./users/profile/profile.component";
-import {SettingsComponent} from "./users/settings/settings.component";
 import {LoginErrorComponent} from "./errors/login-error/login-error.component";
 import {RegisterErrorComponent} from "./errors/register-error/register-error.component";
 import {PostErrorComponent} from "./errors/post-error/post-error.component";
@@ -55,7 +54,6 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'connections', component: ConnectionsComponent, canActivate: [AuthGuard]},
   {path: 'notifications', component: NotificationsComponent, canActivate: [AuthGuard]},
-  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
 
   {path: 'login-error', component: LoginErrorComponent},
   {path: 'register-error', component: RegisterErrorComponent},
