@@ -94,7 +94,7 @@
             <button class="nav-link active" id="pills-event-info-tab" data-bs-toggle="pill" data-bs-target="#pills-event-info"
                     type="button" role="tab" aria-controls="pills-event-info" aria-selected="true">Event information</button>
           </li>
-          <li class="nav-item" role="presentation">
+          <li *ngIf="authService.isAuthenticated()" class="nav-item" role="presentation">
             <button class="nav-link" id="pills-event-attendees-tab" data-bs-toggle="pill" data-bs-target="#pills-event-attendees"
                     type="button" role="tab" aria-controls="pills-event-attendees" aria-selected="false">See who is attending</button>
           </li>
@@ -115,7 +115,7 @@
               </a>
             </div>
           </div>
-          <div class="tab-pane fade" id="pills-event-attendees" role="tabpanel" aria-labelledby="pills-event-attendees-tab" tabindex="1">
+          <div *ngIf="authService.isAuthenticated()" class="tab-pane fade" id="pills-event-attendees" role="tabpanel" aria-labelledby="pills-event-attendees-tab" tabindex="1">
             <h5>{{numberOfAttendees}} people are attending</h5>
             <h4 *ngIf="isAttending" class="attending">Including you!</h4>
             <div class="app flex-row align-items-center">
