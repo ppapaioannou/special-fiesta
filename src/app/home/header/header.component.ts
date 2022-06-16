@@ -19,9 +19,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.notificationService.getNumberOfUnreadNotifications().subscribe(data => {
-      this.unreadNotifications = data;
-    });
+    if (this.authService.isAuthenticated()) {
+      this.notificationService.getNumberOfUnreadNotifications().subscribe(data => {
+        this.unreadNotifications = data;
+      });
+    }
   }
 
   logout() {

@@ -19,8 +19,8 @@ export class UserComponent implements OnInit {
 
   user: UserPayload;
   permalink!: Number;
-  isConnectedTo = false;
-  connectionInProgress = false;
+  connectionStatus = "";
+  //connectionInProgress = false;
 
   posts!: Observable<Array<PostPayload>>;
   fosters!: Observable<Array<PostPayload>>;
@@ -61,17 +61,17 @@ export class UserComponent implements OnInit {
             tab: null,
           },
           queryParamsHandling: 'merge',
-        });
+        }).then(() => console.log(this.tab));
       }
     });
 
     this.userService.getUser(this.permalink).subscribe({
       next: (data:UserPayload) => {
         this.user = data;
-        this.connectionService.isConnectedTo(this.user.id).subscribe((data:boolean) => {
-          this.isConnectedTo = data;
-          this.connectionInProgress = data;
+        this.connectionService.isConnectedTo(this.user.id).subscribe(data => {
+          this.connectionStatus = data;
         });
+
         if (this.user.accountType == "INDIVIDUAL") {
           this.posts = this.postService.getAllUserPosts(this.user.id, false);
         }
@@ -111,10 +111,6 @@ export class UserComponent implements OnInit {
     });
   }
 
-  commend() {
-
-  }
-
   editPost() {
 
   }
@@ -124,7 +120,6 @@ export class UserComponent implements OnInit {
       next: () => {
         console.log('post deleted successfully')
         this.ngOnInit()
-        //this.router.navigateByUrl('/').then(() => console.log('redirecting to home'))
       },
       error: () => {
         console.log('post deletion failed')

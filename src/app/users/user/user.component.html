@@ -6,11 +6,12 @@
                 data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
         <button [ngClass]="{'active': tab && tab === 'posts'}" class="nav-link" id="v-pills-posts-tab" data-bs-toggle="pill"
                 data-bs-target="#v-pills-posts" type="button" role="tab" aria-controls="v-pills-posts" aria-selected="false">Posts</button>
-        <button class="nav-link" id="v-pills-connections-tab" data-bs-toggle="pill" data-bs-target="#v-pills-connections"
+        <button [ngClass]="{'active': tab && tab === 'connections'}" class="nav-link" id="v-pills-connections-tab" data-bs-toggle="pill" data-bs-target="#v-pills-connections"
                 type="button" role="tab" aria-controls="v-pills-connections" aria-selected="false">Connections</button>
         <button [ngClass]="{'active': tab && tab === 'notifications'}" class="nav-link" id="v-pills-notifications-tab" data-bs-toggle="pill"
                 data-bs-target="#v-pills-notifications" type="button" role="tab" aria-controls="v-pills-notifications" aria-selected="false">Notifications</button>
-        <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
+        <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings"
+                type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
       </div>
       <div class="tab-content" id="v-pills-tabContent">
         <div [ngClass]="{'show active': tab && tab === 'profile'}" class="tab-pane fade" id="v-pills-profile" role="tab-panel" aria-labelledby="v-pills-profile-tab" tabindex="0">
@@ -39,7 +40,7 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane fade" id="v-pills-connections" role="tab-panel" aria-labelledby="v-pills-connections-tab" tabindex="2">
+        <div [ngClass]="{'show active': tab && tab === 'connections'}" class="tab-pane fade" id="v-pills-connections" role="tab-panel" aria-labelledby="v-pills-connections-tab" tabindex="2">
           <app-connections></app-connections>
         </div>
         <div [ngClass]="{'show active': tab && tab === 'notifications'}" class="tab-pane fade" id="v-pills-notifications" role="tab-panel" aria-labelledby="v-pills-notifications-tab" tabindex="3">
@@ -84,14 +85,19 @@
 
         <br>
         <div *ngIf="authService.getUserRole() == 'INDIVIDUAL'">
-          <p *ngIf="connectionInProgress">Connection request in progress, go to your Connections page to respond.</p>
-          <button *ngIf="!isConnectedTo && !connectionInProgress" type="button" class="btn-lg btn-primary" (click)="connect()">
-            {{user.accountType == 'INDIVIDUAL' ? 'Add Friend' : 'Follow Organization'}}</button>
-          <button *ngIf="isConnectedTo" type="button" class="btn-lg btn-danger" (click)="deleteConnection()">
+          <p *ngIf="connectionStatus == 'PENDING'">Connection request in progress, wait for response.</p>
+          <button *ngIf="connectionStatus == 'PENDING' || connectionStatus == 'CONNECTED'" type="button" class="btn-lg btn-danger" (click)="deleteConnection()">
             {{user.accountType == 'INDIVIDUAL' ? 'Remove Friend' : 'Unfollow Organization'}}</button>
+          <p *ngIf="connectionStatus == 'CONNECTION REQUEST'">Connection request in progress, go to your
+            <!--<a href="user/me/11">connections page</a>
+            <br>-->
+            <a routerLink="/user/me/11" [queryParams]="{ tab: 'connections'}">connections page</a>
+            to respond.</p>
+          <button *ngIf="connectionStatus == 'NOT CONNECTED'" type="button" class="btn-lg btn-primary" (click)="connect()">
+            {{user.accountType == 'INDIVIDUAL' ? 'Add Friend' : 'Follow Organization'}}</button>
+
+
         </div>
-        <button *ngIf="!authService.isOwnUserPage(user.email)"
-                type="button" class="btn-lg btn-success" (click)="commend()">Commend User</button>
 
       </div>
     </div>

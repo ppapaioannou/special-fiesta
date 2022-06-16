@@ -20,8 +20,8 @@ export class ConnectionService {
     return this.httpClient.get<Array<ConnectionPayload>>(this.url + connectionType);
   }
 
-  isConnectedTo(userId: string): Observable<any> {
-    return this.httpClient.get(this.url + 'is-connected-to/' + userId);
+  isConnectedTo(userId: string) {
+    return this.httpClient.get(this.url + 'status/' + userId, {responseType: 'text'})
   }
 
   acceptConnection(userId: string) {

@@ -9,9 +9,9 @@
           <li class="nav-item dropdown">
             <a class="title nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-target="dropdown" href="#" role="button" aria-expanded="false">Account</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" routerLink="user/{{userId}}" [queryParams]="{ tab: 'profile'}">Profile</a></li>
-              <li><a class="dropdown-item" routerLink="user/{{userId}}" [queryParams]="{ tab: 'posts'}">My Posts</a></li>
-              <li><a class="dropdown-item position-relative" routerLink="user/{{userId}}" [queryParams]="{ tab: 'notifications'}">Notifications
+              <li><a class="dropdown-item" routerLink="/user/me/{{userId}}" [queryParams]="{ tab: 'profile'}">Profile</a></li>
+              <li><a class="dropdown-item" routerLink="/user/me/{{userId}}" [queryParams]="{ tab: 'posts'}">My Posts</a></li>
+              <li><a class="dropdown-item position-relative" routerLink="/user/{{userId}}" [queryParams]="{ tab: 'notifications'}">Notifications
                 <span *ngIf="unreadNotifications != 0" class="position-absolute top-50 start-0 translate-middle p-1 bg-danger border border-light rounded-circle"></span></a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" (click)="logout()">Logout</a></li>

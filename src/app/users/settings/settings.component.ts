@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../service/user.service";
-import {UserPayload} from "../../payload/user-payload";
 import {AuthService} from "../../service/auth.service";
 import {Router} from "@angular/router";
 
@@ -16,10 +15,6 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void { }
 
   changePassword() {
-
-  }
-
-  makeProfilePrivate() {
 
   }
 

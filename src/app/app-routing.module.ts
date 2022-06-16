@@ -47,6 +47,7 @@ const routes: Routes = [
   {path: 'add-comment/:id', component: AddCommentComponent, canActivate: [AuthGuard]},
 
   {path: 'user/:id', component: UserComponent, canActivate: [AuthGuard]},
+  {path: 'user/me/:id', component: UserComponent, canActivate: [AuthGuard]},
   {path: 'community', component: CommunityComponent, canActivate: [AuthGuard]},
   {path: 'community/individuals', component: CommunityComponent, canActivate: [AuthGuard]},
   {path: 'community/organizations', component: CommunityComponent, canActivate: [AuthGuard]},
