@@ -22,7 +22,6 @@
               <h3><span class="badge rounded-pill bg-warning">{{post.postType}}</span>&nbsp;<a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
               <img class="thumbnail" src="{{post.thumbnail}}" alt=""/>
               <br>
-              <button class="btn-primary" type="button" (click)="editPost()">Edit</button>
               <button class="btn-danger" type="button" (click)="deletePost(post.id)">Delete</button>
               <hr>
             </div>
