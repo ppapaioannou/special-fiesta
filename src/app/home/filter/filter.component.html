@@ -8,8 +8,8 @@
           <option [ngValue]="'date'">Date (recent first)</option>
           <option [ngValue]="'distance'">Distance (nearest first)</option>
         </select>
-        <br>
       </div>
+      <br>
       <label class="filter-postType">Show only:&ensp;</label>
       <div class="form-check-inline" *ngFor="let postType of postTypes; let i=index">
         <label>
@@ -18,6 +18,7 @@
         </label>
       </div>
       <br>
+      <hr>
       <label class="filter-animalType">Posts about:&ensp;</label>
       <div class="form-check-inline" *ngFor="let animalType of animalTypes; let i=index">
         <label>
@@ -25,6 +26,7 @@
           {{animalType.name}}
         </label>
       </div>
+      <br>
       <br>
       <label class="filter-size">Size:&ensp;</label>
       <div class="form-check-inline" *ngFor="let size of sizes; let i=index">
@@ -34,6 +36,7 @@
         </label>
       </div>
       <br>
+      <br>
       <label class="filter-gender">Gender:&ensp;</label>
       <div class="form-check-inline" *ngFor="let gender of genders; let i=index">
         <label>
@@ -42,13 +45,14 @@
         </label>
       </div>
       <br>
+      <br>
       <div>
         <label class="post-breed">Age:&ensp;</label>
         <select [formControlName]="'age'">
           <option *ngFor="let age of ages" [ngValue]="age.name">{{age.name}}</option>
         </select>
-        <br>
       </div>
+      <hr>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Update</button>
       </div>

@@ -30,8 +30,6 @@ export class FilterComponent implements OnInit {
     });
   }
 
-  //TODO FILTER COLOR
-
   ngOnInit(): void {
   }
 
