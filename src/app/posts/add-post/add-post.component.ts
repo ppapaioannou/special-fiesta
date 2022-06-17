@@ -47,12 +47,12 @@ export class AddPostComponent implements OnInit {
       size: new FormControl(),
       microchipNumber: new FormControl(),
       body: new FormControl(),
-      actionTaken: new FormControl(),
+      actionTaken: new FormControl('No actions taken'),
       actionTakenOther: new FormControl(),
       age: new FormControl(),
-      neutered: new FormControl(),
-      goodWithChildren: new FormControl(),
-      goodWithAnimals: new FormControl(),
+      neutered: new FormControl('No'),
+      goodWithChildren: new FormControl('No'),
+      goodWithAnimals: new FormControl('No'),
       time: new FormControl('12:00')
     });
     this.postPayload = {
