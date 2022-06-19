@@ -22,7 +22,7 @@ export class UserService {
     return this.httpClient.put(this.url + 'update-info', request);
   }
 
-  getAllUsers(userType: string, some: boolean, searchInput: string): Observable<Array<UserPayload>> {
+  getAllUsers(userType: string, preview: boolean, searchInput: string): Observable<Array<UserPayload>> {
     let filter = this.url + 'all?search=(userRole:'+userType;
     if (searchInput != "") {
       filter += ' AND ' + searchInput +')';
@@ -30,9 +30,7 @@ export class UserService {
     else {
       filter += ')'
     }
-    if (some) {
-      filter += '&pageSize=3';
-    }
+    filter += '&preview=' + preview
     return this.httpClient.get<Array<UserPayload>>(filter);
   }
 

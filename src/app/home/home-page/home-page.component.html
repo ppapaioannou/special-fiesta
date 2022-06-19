@@ -25,9 +25,9 @@
                 <h5>Distance: {{post.distance}} meters</h5>
               </div>
               <h5>Date: {{post.date}}</h5>
-              <div class="preview">
-                <p class="preview" [innerHTML]="post.body"></p>
-              </div>
+            </div>
+            <div class="preview" *ngIf="post.postType=='missing'">
+              <p class="preview" [innerHTML]="post.body"></p>
             </div>
             <div *ngIf="post.postType=='stray'">
               <h5>Location: {{post.address}}</h5>

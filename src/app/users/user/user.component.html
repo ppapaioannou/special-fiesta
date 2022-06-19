@@ -79,11 +79,10 @@
         <br>
         <div *ngIf="authService.getUserRole() == 'INDIVIDUAL'">
           <p *ngIf="connectionStatus == 'PENDING'">Connection request in progress, wait for response.</p>
-          <button *ngIf="connectionStatus == 'PENDING' || connectionStatus == 'CONNECTED'" type="button" class="btn-lg btn-danger" (click)="deleteConnection()">
+          <button *ngIf="connectionStatus == 'PENDING' || connectionStatus == 'CONNECTED' || connectionStatus == 'FOLLOWER'"
+                  type="button" class="btn-lg btn-danger" (click)="deleteConnection()">
             {{user.accountType == 'INDIVIDUAL' ? 'Remove Friend' : 'Unfollow Organization'}}</button>
           <p *ngIf="connectionStatus == 'CONNECTION REQUEST'">Connection request in progress, go to your
-            <!--<a href="user/me/11">connections page</a>
-            <br>-->
             <a routerLink="/user/me/11" [queryParams]="{ tab: 'connections'}">connections page</a>
             to respond.</p>
           <button *ngIf="connectionStatus == 'NOT CONNECTED'" type="button" class="btn-lg btn-primary" (click)="connect()">
