@@ -17,7 +17,7 @@ import {LoginErrorComponent} from "./errors/login-error/login-error.component";
 import {RegisterErrorComponent} from "./errors/register-error/register-error.component";
 import {PostErrorComponent} from "./errors/post-error/post-error.component";
 import {LocationErrorComponent} from "./errors/location-error/location-error.component";
-import {HomePageComponent} from "./home/home-page/home-page.component";
+import { HomePageComponent } from './home/homepage/homepage.component';
 import {RegisterComponent} from "./auth/registration/register/register.component";
 import {AddPostComponent} from "./posts/add-post/add-post.component";
 

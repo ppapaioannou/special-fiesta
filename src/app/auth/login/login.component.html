@@ -1,6 +1,7 @@
 <div class="container">
   <form class="form-login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <h1 class="h3 mb-3 font-weight-normal">Please Sign in</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Welcome Back!</h1>
+    <p>Don't have an account, <a href="/register">Sign Up</a></p>
     <div class="form-group">
       <label for="inputEmail" class="sr-only"></label>
       <input type="text" id="inputEmail" [formControlName]="'email'" class="form-control"

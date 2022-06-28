@@ -9,7 +9,7 @@ import {
   ViewChild
 } from '@angular/core';
 import {GoogleMap} from "@angular/google-maps";
-import {LocationPayload} from "../../payload/location-payload";
+import {LocationPayload} from "../payload/location-payload";
 
 @Component({
   selector: 'app-map',

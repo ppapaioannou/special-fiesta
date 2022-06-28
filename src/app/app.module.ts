@@ -15,7 +15,7 @@ import {HttpClientInterceptor} from "./security/http-client.interceptor";
 import { PostTypeSelectionComponent } from './posts/post-type-selection/post-type-selection.component';
 import { AddCommentComponent } from './posts/comments/add-comment/add-comment.component';
 import { DiscussionComponent } from './posts/comments/discussion/discussion.component';
-import { MapComponent } from './location/map/map.component';
+import { MapComponent } from './map/map.component';
 import {GoogleMapsModule} from "@angular/google-maps";
 import { NearMeComponent } from './home/near-me/near-me.component';
 import { FilterComponent } from './home/filter/filter.component';
@@ -28,10 +28,11 @@ import { LoginErrorComponent } from './errors/login-error/login-error.component'
 import { RegisterErrorComponent } from './errors/register-error/register-error.component';
 import { PostErrorComponent } from './errors/post-error/post-error.component';
 import { LocationErrorComponent } from './errors/location-error/location-error.component';
-import { HomePageComponent } from './home/home-page/home-page.component';
+import { HomePageComponent } from './home/homepage/homepage.component';
 import { RegisterComponent } from './auth/registration/register/register.component';
 import { RegisterHeaderComponent } from './auth/registration/register-header/register-header.component';
 import { AddPostComponent } from './posts/add-post/add-post.component';
+
 
 @NgModule({
   declarations: [
