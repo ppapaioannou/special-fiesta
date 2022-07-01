@@ -71,9 +71,9 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(
       this.searchField.nativeElement
     );
-    this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(
-      this.selectButton.nativeElement
-    );
+    //this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(
+    //  this.selectButton.nativeElement
+    //);
     searchBox.addListener('places_changed', () => {
       const places = searchBox.getPlaces();
       if (places!.length === 0) {

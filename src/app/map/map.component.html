@@ -1,5 +1,4 @@
 <input #mapSearchField class="maps-search-field" type="text"/>
-<button #selectLocationButton type="button" class="select-location-button btn btn-primary" (click)="setLocation()">Set Location</button>
 
 <google-map
   height="300px"
@@ -18,5 +17,6 @@
   <h6>Address: {{address}}</h6>
   <!--<button type=button class="btn btn-primary" (click)="setLocation()">Set Location</button>-->
 
+  <button #selectLocationButton type="button" class="select-location-button btn btn-primary" (click)="setLocation()">Confirm Location</button>
   <hr>
 </div>
